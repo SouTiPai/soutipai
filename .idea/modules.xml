@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/soutipai_app/android/app/src/debug/debug.iml" filepath="$PROJECT_DIR$/soutipai_app/android/app/src/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/soutipai_app/android/app/src/profile/profile.iml" filepath="$PROJECT_DIR$/soutipai_app/android/app/src/profile/profile.iml" />
       <module fileurl="file://$PROJECT_DIR$/soutipai_app/soutipai_app.iml" filepath="$PROJECT_DIR$/soutipai_app/soutipai_app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/soutipai_app/soutipai_app1.iml" filepath="$PROJECT_DIR$/soutipai_app/soutipai_app1.iml" />
     </modules>
   </component>
 </project>
