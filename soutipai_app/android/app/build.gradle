@@ -8,7 +8,7 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new Exception("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -25,7 +25,26 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 30
+    /*
+    //程序在编译的时候会检查lint，有任何错误提示会停止build，我们可以关闭这个开关
+    lintOptions {
+        //即使报错也不会停止打包
+        abortOnError false
+        //打包release版本的时候是否进行检测
+        checkReleaseBuilds false
+    }
+    */
+    //编译sdk的版本，也就是API Level，例如API-19、API-20、API-21等等。
+    compileSdkVersion 31
+    //build tools的版本，其中包括了打包工具aapt、dx等等。
+    //这个工具的目录位于你的sdk目录/build-tools/下
+    buildToolsVersion '30.0.0'
+
+    /*
+    //关闭Android Studio的PNG合法性检查
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    */
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,7 +55,7 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.soutipai_app"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
