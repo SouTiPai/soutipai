@@ -1,4 +1,4 @@
-package ThisIsATest;
+package ThisIsATest.DotCom.v2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
