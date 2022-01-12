@@ -46,7 +46,6 @@ public class SQLConnector{
                 job = rs.getString("job");
                 //获取ename这列数据
                 name = rs.getString("ename");
-
                 //输出结果
                 System.out.println(name + "\t" + job);
             }
