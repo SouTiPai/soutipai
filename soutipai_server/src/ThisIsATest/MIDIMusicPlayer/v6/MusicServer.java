@@ -64,10 +64,10 @@ public class MusicServer {
     }
 
     public void tellEveryone(Object one,Object two){
-        Iterator it = clientOutPutStreams.iterator();
+        Iterator<ObjectOutputStream> it = clientOutPutStreams.iterator();
         while (it.hasNext()){
             try {
-                ObjectOutputStream out = (ObjectOutputStream) it.next();
+                ObjectOutputStream out = it.next();
                 out.writeObject(one);
                 out.writeObject(two);
             }catch (Exception ex){
