@@ -1,66 +1,102 @@
 package com.soutipai.SQLConnector;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class SQLConnector{
-    //声明sql语句
-    String sql;
-    //声明Connection对象
-    Connection con;
-    //驱动程序名
-    String driver = "com.mysql.cj.jdbc.Driver";
-    //URL指向要访问的数据库名soutipai
-    String url = "jdbc:mysql://127.0.0.1:3306/soutipai";
-    //MySQL配置时的用户名
-    String user = "root";
-    //MySQL配置时的密码
-    String password = "root";
-    public SQLConnector(String s){
-        sql = s;
+public class SQLConnector {
+    final static String URL = "jdbc:mysql://127.0.0.1:3306/soutipai";
+    final static String USERNAME = "root";
+    final static String PASSWORD = "root";
+
+    private static Connection conn;
+
+    static{
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
-    public synchronized void getData(){
-        //遍历查询结果集
+    //获取数据库连接
+    public static Connection getConn(){
         try {
-            //加载驱动程序
-            Class.forName(driver);
-            //1.getConnection()方法，连接MySQL数据库！！
-            con = DriverManager.getConnection(url, user, password);
-            if (!con.isClosed()) {
-                System.out.println("Succeeded connecting to the Database");
+            if (conn==null||conn.isClosed()) {
+                conn= DriverManager.getConnection(URL, USERNAME, PASSWORD);
             }
-            //2.创建statement类对象，用来执行SQL语句！！
-            Statement statement = con.createStatement();
-            //3.ResultSet类，用来存放获取的结果集！！
-            ResultSet rs = statement.executeQuery(sql);
-            System.out.println("-----------------");
-            System.out.println("执行结果如下所示：");
-            System.out.println("-----------------");
-            System.out.println("姓名" + "\t" + "职称");
-            System.out.println("-----------------");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return conn;
+    }
 
-            String job;
-            String name;
-            while (rs.next()) {
-                //获取job这列数据
-                job = rs.getString("job");
-                //获取ename这列数据
-                name = rs.getString("ename");
-                //输出结果
-                System.out.println(name + "\t" + job);
+    //关闭资源
+    public static void closeAll(ResultSet rs, PreparedStatement ps, Connection conn){
+        try {
+            if (rs!=null) {
+                rs.close();
             }
-            rs.close();
-            con.close();
-        }catch (ClassNotFoundException e){
-            //数据库驱动类异常处理
-            System.out.println("Sorry, can't find the Driver");
+            if (ps!=null) {
+                ps.close();
+            }
+            if (conn!=null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
-        } catch (Exception e){
-            //数据库连接失败异常处理
-            e.printStackTrace();
-        }// TODO: handle exception
-        finally {
-            System.out.println("数据库程序运行结束！！");
+        }
+    }
+
+    public static PreparedStatement getPS(PreparedStatement ps, Object... objects) {
+        for (int i = 0; i < objects.length; i++) {
+            try {
+                ps.setObject(i + 1, objects[i]);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return ps;
+    }
+
+    public static Map<String, Object> setMap(Object obj, ResultSet rs){
+        HashMap<String, Object> hm=new HashMap<>();
+        Field[] fields=obj.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            try {
+                hm.put(field.getName(), rs.getObject(field.getName()));
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return hm;
+    }
+
+    public static void setT(Object obj, Map<String, Object> map1) {
+
+        Class<?> c = obj.getClass();
+        Method[] methods = c.getMethods();
+        for (Method m : methods) {
+            if (m.getName().startsWith("set")) {
+                String name = m.getName();
+                name = name.substring(3, 4).toLowerCase() + name.substring(4);
+
+                if (map1.containsKey(name)) {
+                    try {
+                        m.invoke(obj, map1.get(name));
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 }
