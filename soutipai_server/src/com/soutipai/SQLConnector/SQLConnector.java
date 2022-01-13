@@ -53,7 +53,7 @@ public class SQLConnector {
         }
     }
 
-    public static PreparedStatement getPS(PreparedStatement ps, Object... objects) {
+    public static void getPS(PreparedStatement ps, Object... objects) {
         for (int i = 0; i < objects.length; i++) {
             try {
                 ps.setObject(i + 1, objects[i]);
@@ -62,7 +62,6 @@ public class SQLConnector {
                 e.printStackTrace();
             }
         }
-        return ps;
     }
 
     public static Map<String, Object> setMap(Object obj, ResultSet rs){

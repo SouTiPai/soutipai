@@ -1,5 +1,5 @@
 package com.soutipai.demo;
-
+//测试用类
 public class PeoPle {
     int empno;
     String ename;
