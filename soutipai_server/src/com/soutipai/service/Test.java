@@ -1,6 +1,7 @@
-package com.soutipai.demo;
+package com.soutipai.service;
 
-import com.soutipai.SQLConnector.SQLConnector;
+import com.soutipai.SQLServer.SQLConnector;
+import com.soutipai.SQLclass.PeoPle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-public class Main {
-    public static void main(String[] args){
+public class Test {
+    public static void run()
+    {
         try {
             Connection con;
             con = SQLConnector.getConn();
@@ -33,7 +35,6 @@ public class Main {
     }
 
     public static void print(PeoPle p){
-        System.out.println(p.empno+" "+p.ename+" "+p.job+" "+p.hireDate+" "+p.sal);
+        System.out.println(p.getEmpno()+" "+p.getEname()+" "+p.getJob()+" "+p.getHireDate()+" "+p.getSal());
     }
 }
-

@@ -1,4 +1,4 @@
-package com.soutipai.SQLConnector;
+package com.soutipai.SQLServer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
