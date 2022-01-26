@@ -57,4 +57,4 @@ flutter:
   fonts:
     - family: Lishu
       fonts:
-        - asset: lib/source/fonts/MaShanZheng-Regular.ttf
+        - asset: fonts/MaShanZheng-Regular.ttf
