@@ -11,7 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  provider: ^5.0.0
+  dio: ^3.0.9
+  toast: ^0.1.5
 
   cupertino_icons: ^1.0.2
 
@@ -29,3 +31,10 @@ flutter:
     - family: Lishu
       fonts:
         - asset: fonts/MaShanZheng-Regular.ttf
+
+  assets:
+    - assets/images/cloud.png
+    - assets/images/go_home.png
+    - assets/images/lamp.png
+    - assets/images/photo_another.png
+    - assets/images/text_background.png
