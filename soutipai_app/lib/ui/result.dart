@@ -71,7 +71,7 @@ class ResultState extends State<ResultPage> {
                 });
               },
               child: Image(
-                image: AssetImage("assets/images/lamp.png"),
+                image: AssetImage("assets/images/result/lamp.png"),
                 fit: BoxFit.cover,
                 height: 80,
                 width: 40,
@@ -104,7 +104,7 @@ class ResultState extends State<ResultPage> {
               child: MaterialButton(
                 onPressed: _addCollection,
                 child: Image(
-                  image: AssetImage("assets/images/cloud.png"),
+                  image: AssetImage("assets/images/result/cloud.png"),
                   fit: BoxFit.cover,
                   height: 40,
                   width: 70,
@@ -127,7 +127,7 @@ class ResultState extends State<ResultPage> {
         children: [
           _buildButtonColum(
               Image(
-                image: AssetImage("assets/images/photo_another.png"),
+                image: AssetImage("assets/images/result/photo_another.png"),
                 fit: BoxFit.cover,
                 height: 70,
                 width: 70,
@@ -136,7 +136,7 @@ class ResultState extends State<ResultPage> {
               CircleBorder()),
           _buildButtonColum(
               Image(
-                image: AssetImage("assets/images/go_home.png"),
+                image: AssetImage("assets/images/result/go_home.png"),
                 fit: BoxFit.cover,
                 height: 70,
                 width: 70,

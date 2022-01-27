@@ -33,8 +33,8 @@ flutter:
         - asset: fonts/MaShanZheng-Regular.ttf
 
   assets:
-    - assets/images/cloud.png
-    - assets/images/go_home.png
-    - assets/images/lamp.png
-    - assets/images/photo_another.png
-    - assets/images/text_background.png
+    - assets/images/result/cloud.png
+    - assets/images/result/go_home.png
+    - assets/images/result/lamp.png
+    - assets/images/result/photo_another.png
+    - assets/images/result/text_background.png
