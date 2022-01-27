@@ -217,7 +217,7 @@ class ResultState extends State<ResultPage> {
         height: 70,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/text_background.png"),
+                image: AssetImage("assets/images/result/text_background.png"),
                 fit: BoxFit.fill)),
         child: Center(
           child: Text(
