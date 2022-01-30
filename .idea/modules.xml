@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/.idea.iml" filepath="$PROJECT_DIR$/.idea/.idea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soutipai_app/android/app/src/debug/debug.iml" filepath="$PROJECT_DIR$/soutipai_app/android/app/src/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/out/out.iml" filepath="$PROJECT_DIR$/out/out.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soutipai_app/android/app/src/profile/profile.iml" filepath="$PROJECT_DIR$/soutipai_app/android/app/src/profile/profile.iml" />
       <module fileurl="file://$PROJECT_DIR$/soutipai_app/soutipai_app.iml" filepath="$PROJECT_DIR$/soutipai_app/soutipai_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soutipai_app/soutipai_app1.iml" filepath="$PROJECT_DIR$/soutipai_app/soutipai_app1.iml" />
       <module fileurl="file://$PROJECT_DIR$/soutipai_server/soutipai_server.iml" filepath="$PROJECT_DIR$/soutipai_server/soutipai_server.iml" />
     </modules>
   </component>
