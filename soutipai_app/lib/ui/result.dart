@@ -23,6 +23,7 @@ class ResultState extends State<ResultPage> {
   ];
   int _selected = 0; //选择的题目
   bool _visible = false; //文本修改框是否可见
+  double _minHeight = 200;
 
   var _questionText = new TextEditingController();
 
@@ -48,42 +49,40 @@ class ResultState extends State<ResultPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Stack(
-        alignment: const FractionalOffset(0.5, 0.7),
-        children: [
-          Container(
-            constraints: BoxConstraints(
-              minHeight: 130,
-            ),
-            child: Column(
-              children: [
-                _buildContainer("题目"),
-                _buildCard("question"),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 51,
-            right: 3,
-            child: MaterialButton(
-              onPressed: () {
-                setState(() {
-                  _visible = !_visible;
-                });
-              },
-              child: Image(
-                image: AssetImage("assets/images/result/lamp.png"),
-                fit: BoxFit.cover,
-                height: 80,
-                width: 40,
+          alignment: const FractionalOffset(0.5, 0.7),
+          children: [
+            Container(
+              child: Column(
+                children: [
+                  _buildContainer("题目"),
+                  _buildCard("question"),
+                ],
               ),
-              height: 80,
-              minWidth: 40,
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
             ),
-          ),
-        ],
-      ),//题目部分
+            Positioned(
+              top: 51,
+              right: 3,
+              child: MaterialButton(
+                onPressed: () {
+                  setState(() {
+                    _visible ? _minHeight = 200 : _minHeight = 127;
+                    _visible = !_visible;
+                  });
+                },
+                child: Image(
+                  image: AssetImage("assets/images/result/lamp.png"),
+                  fit: BoxFit.cover,
+                  height: 80,
+                  width: 40,
+                ),
+                height: 80,
+                minWidth: 40,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+              ),
+            ),
+          ],
+        ), //题目部分
         Stack(
           alignment: const FractionalOffset(0.5, 0.7),
           children: [
@@ -116,7 +115,7 @@ class ResultState extends State<ResultPage> {
               ),
             ),
           ],
-        ),//解析部分
+        ), //解析部分
       ],
     );
 
@@ -125,7 +124,7 @@ class ResultState extends State<ResultPage> {
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildButtonColum(
+          _buildButtonColumn(
               Image(
                 image: AssetImage("assets/images/result/photo_another.png"),
                 fit: BoxFit.cover,
@@ -134,7 +133,7 @@ class ResultState extends State<ResultPage> {
               ),
               () => Navigator.pushNamed(context, "/"), //TODO:此处为返回首页路由
               CircleBorder()),
-          _buildButtonColum(
+          _buildButtonColumn(
               Image(
                 image: AssetImage("assets/images/result/go_home.png"),
                 fit: BoxFit.cover,
@@ -149,18 +148,17 @@ class ResultState extends State<ResultPage> {
 
     return Scaffold(
       body: Container(
-        child: RefreshIndicator(
-          onRefresh: _refresh,
-          child: new ListView(
-            children: [
-              _buildTExtField(_question),//文本框
-              answerSelector,//题目选择
-              answerSection,
-              buttonSection
-            ],
-          ),
-        )
-      ),
+          child: RefreshIndicator(
+        onRefresh: _refresh,
+        child: new ListView(
+          children: [
+            _buildTExtField(_question), //文本框
+            answerSelector, //题目选择
+            answerSection,
+            buttonSection
+          ],
+        ),
+      )),
     );
   }
 
@@ -195,7 +193,7 @@ class ResultState extends State<ResultPage> {
   }
 
   //构建底部跳转按钮
-  Column _buildButtonColum(Image image, Function function, ShapeBorder border) {
+  Column _buildButtonColumn(Image image, Function function, ShapeBorder border) {
     return new Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -240,6 +238,7 @@ class ResultState extends State<ResultPage> {
       borderOnForeground: false,
       margin: EdgeInsets.fromLTRB(50, 5, 50, 5),
       child: Container(
+        constraints: BoxConstraints(minHeight: _minHeight),
         margin: EdgeInsets.all(10.0),
         alignment: Alignment.center,
         child: Text(
@@ -254,7 +253,7 @@ class ResultState extends State<ResultPage> {
 
   //构建文本框
   Widget _buildTExtField(String text) {
-    _questionText=new TextEditingController(text:text);
+    _questionText = new TextEditingController(text: text);
     return SingleChildScrollView(
       child: Visibility(
         visible: _visible ? true : false,
@@ -281,7 +280,7 @@ class ResultState extends State<ResultPage> {
                   margin: EdgeInsets.all(15.0),
                   child: TextField(
                     controller: _questionText,
-                    keyboardType:TextInputType.text,
+                    keyboardType: TextInputType.text,
                     maxLines: null,
                   ),
                 ),
@@ -294,18 +293,18 @@ class ResultState extends State<ResultPage> {
   }
 
   //TODO: 下拉刷新，待实现
-  Future _refresh()async{
-    if(_visible)
-      {
-        setState(() {
-          _question=_questionText.text;
-          _visible=!_visible;
-          print("下拉刷新");
-          //TODO:实现刷新
-        });
-      }
+  Future _refresh() async {
+    if (_visible) {
+      setState(() {
+        _minHeight = 200;
+        _question = _questionText.text;
+        _visible = !_visible;
+        print("下拉刷新");
+        //TODO:实现刷新
+      });
+    }
   }
 
   //TODO: 添加收藏，待实现
-  Future _addCollection()async{}
+  Future _addCollection() async {}
 }
