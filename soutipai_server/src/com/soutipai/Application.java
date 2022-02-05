@@ -1,6 +1,6 @@
 package com.soutipai;
 
-import com.soutipai.service.Test;
+import com.soutipai.jdbc.Test;
 
 public class Application {
     public static void main(String[] args){
