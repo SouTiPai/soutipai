@@ -1,4 +1,4 @@
-package com.soutipai.jdbc;
+package com.soutipai.common;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -78,7 +78,7 @@ public class SQLConnector {
         return hm;
     }
 
-    public static void setT(Object obj, Map<String, Object> map1) {
+    public static void setT(Object obj, Map<String, Object> map) {
 
         Class<?> c = obj.getClass();
         Method[] methods = c.getMethods();
@@ -87,9 +87,9 @@ public class SQLConnector {
                 String name = m.getName();
                 name = name.substring(3, 4).toLowerCase() + name.substring(4);
 
-                if (map1.containsKey(name)) {
+                if (map.containsKey(name)) {
                     try {
-                        m.invoke(obj, map1.get(name));
+                        m.invoke(obj, map.get(name));
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
