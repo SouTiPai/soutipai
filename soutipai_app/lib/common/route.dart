@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:soutipai_app/ui/home.dart';
 import 'package:soutipai_app/ui/result.dart';
 import 'package:soutipai_app/ui/wrong_questions_book.dart';
+import 'package:soutipai_app/ui/more.dart';
 
 final routes = {
   "/": (context) => MyHomePage(title: "搜题派"),
   "/result_page": (context) => ResultPage(),
   "/wrong_questions_book":(context)=>WrongQuestionsBook(),
+  "/more":(context)=>more(),
+
 };
 
 var onGenerateRoute = (RouteSettings settings) {
