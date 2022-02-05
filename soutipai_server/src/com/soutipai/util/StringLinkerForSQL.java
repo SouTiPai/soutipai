@@ -1,4 +1,5 @@
-package com.soutipai.common;
+//字符串连接，自动补充空格
+package com.soutipai.util;
 
 import com.soutipai.common.Exceptions.LinkerException;
 
