@@ -1,4 +1,4 @@
-package com.soutipai.SQLclass;
+package com.soutipai.po;
 
 import java.sql.Date;
 //测试用类
