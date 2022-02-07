@@ -12,9 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0
-  dio: ^3.0.9
+  dio: any
   toast: ^0.1.5
   cupertino_icons: ^1.0.2
+  extended_image: ^4.2.1
+  image_cropper: ^1.4.1
+  image_editor: any
+  image: any
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +42,8 @@ flutter:
     - assets/images/result/photo_another.png
     - assets/images/result/text_background.png
     - assets/images/wrong_questions_book/SanXingTing_sus.jpg
+    - assets/images/screenshot/2.png
+    - assets/images/screenshot/3.png
+    - assets/images/screenshot/4.png
+    - assets/images/screenshot/5.jpg
+

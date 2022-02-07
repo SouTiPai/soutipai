@@ -3,12 +3,14 @@ import 'package:soutipai_app/ui/home.dart';
 import 'package:soutipai_app/ui/result.dart';
 import 'package:soutipai_app/ui/wrong_questions_book.dart';
 import 'package:soutipai_app/ui/more.dart';
+import 'package:soutipai_app/ui/crop_picture.dart';
 
 final routes = {
   "/": (context) => MyHomePage(title: "搜题派"),
   "/result_page": (context) => ResultPage(),
-  "/wrong_questions_book":(context)=>WrongQuestionsBook(),
-  "/more":(context)=>more(),
+  "/wrong_questions_book_page":(context)=>WrongQuestionsBook(),
+  "/more_page":(context)=>more(),
+  "/crop_picture_page":(context)=>ScreenDemo(),
 
 };
 
