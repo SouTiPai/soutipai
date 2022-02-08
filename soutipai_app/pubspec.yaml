@@ -19,6 +19,7 @@ dependencies:
   image_cropper: ^1.4.1
   image_editor: any
   image: any
+  image_picker: ^0.5.0+3
 
 dev_dependencies:
   flutter_test:
@@ -46,4 +47,11 @@ flutter:
     - assets/images/screenshot/3.png
     - assets/images/screenshot/4.png
     - assets/images/screenshot/5.jpg
+    - assets/images/photograph/circle.png
+    - assets/images/photograph/flashlight.png
+    - assets/images/photograph/goback.png
+    - assets/images/photograph/photograph_circle.png
+    - assets/images/photograph/photograph_picture.png
+    - assets/images/photograph/photograph_storage_frame.png
+    - assets/images/photograph/photograph_storage_picture.png
 
