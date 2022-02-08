@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/photograph_page',
+      initialRoute: '/crop_picture_page',
       onGenerateRoute: onGenerateRoute,
     );
   }

@@ -20,11 +20,12 @@
           <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.27.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/mysql-connector-java-8.0.27-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mysql-connector-java-8.0.27" level="project" />
-    <orderEntry type="library" name="Dart SDK" level="project" />
-    <orderEntry type="library" name="Dart Packages" level="project" />
+    <orderEntry type="library" exported="" name="mysql-connector-java-8.0.27" level="project" />
+    <orderEntry type="library" exported="" name="fastjson-1.2.47" level="project" />
   </component>
 </module>
