@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:soutipai_app/ui/home.dart';
 import 'package:soutipai_app/ui/result.dart';
-
+import 'package:soutipai_app/ui/photograph.dart';
 final routes = {
   "/": (context) => MyHomePage(title: "搜题派"),
   "/result_page": (context) => ResultPage(),
+  "/photograph_page":(context)=>ImagePickerWidget(),
 };
 
 var onGenerateRoute = (RouteSettings settings) {

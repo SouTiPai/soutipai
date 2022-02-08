@@ -15,6 +15,7 @@ dependencies:
   dio: ^3.0.9
   toast: ^0.1.5
   cupertino_icons: ^1.0.2
+  image_picker: ^0.5.0+3
 
 dev_dependencies:
   flutter_test:
@@ -37,3 +38,10 @@ flutter:
     - assets/images/result/lamp.png
     - assets/images/result/photo_another.png
     - assets/images/result/text_background.png
+    - assets/images/photograph/circle.png
+    - assets/images/photograph/flashlight.png
+    - assets/images/photograph/goback.png
+    - assets/images/photograph/photograph_circle.png
+    - assets/images/photograph/photograph_picture.png
+    - assets/images/photograph/photograph_storage_frame.png
+    - assets/images/photograph/photograph_storage_picture.png
