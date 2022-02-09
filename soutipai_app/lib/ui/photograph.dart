@@ -362,7 +362,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
           child: Column(
             children: [
               TextButton(                                                            //返回home界面按钮
-                  onPressed: () => Navigator.pushNamed(context, 'home_page'),
+                  onPressed: () => Navigator.pushNamed(context, '/'),
                   child: Image.asset(
                     'assets/images/photograph/goback.png',
                     width: 50,height: 50,
