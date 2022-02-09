@@ -11,6 +11,7 @@ final routes = {
   "/wrong_questions_book_page":(context)=>WrongQuestionsBook(),
   "/more_page":(context)=>more(),
   "/crop_picture_page":(context)=>ScreenDemo(),
+ // "/photograph_page":(context)=>IdentifyCard(),
   "/photograph_page":(context)=>ImagePickerWidget(),
 
 };
