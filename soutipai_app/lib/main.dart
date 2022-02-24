@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:soutipai_app/common/route.dart';
 

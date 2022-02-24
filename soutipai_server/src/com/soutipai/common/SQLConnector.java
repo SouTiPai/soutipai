@@ -1,21 +1,36 @@
 package com.soutipai.common;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class SQLConnector {
-    final static String URL = "jdbc:mysql://127.0.0.1:3306/soutipai";
-    final static String USERNAME = "root";
-    final static String PASSWORD = "root";
+    static String URL = null;
+    static String USERNAME = null;
+    static String PASSWORD = null;
+    static String DRIVERCLASS = null;
 
     private static Connection conn;
 
-    static{
+    static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            InputStream is = SQLConnector.class.getClassLoader().getResourceAsStream("jdbc.properties");
+            Properties pros = new Properties();
+            pros.load(is);
+            URL = pros.getProperty("url");
+            USERNAME = pros.getProperty("user");
+            PASSWORD = pros.getProperty("password");
+            DRIVERCLASS = pros.getProperty("driverClass");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Class.forName(DRIVERCLASS);
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -23,10 +38,10 @@ public class SQLConnector {
     }
 
     //获取数据库连接
-    public static Connection getConn(){
+    public static Connection getConn() {
         try {
-            if (conn==null||conn.isClosed()) {
-                conn= DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            if (conn == null || conn.isClosed()) {
+                conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -36,15 +51,15 @@ public class SQLConnector {
     }
 
     //关闭资源
-    public static void closeAll(ResultSet rs, PreparedStatement ps, Connection conn){
+    public static void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) {
         try {
-            if (rs!=null) {
+            if (rs != null) {
                 rs.close();
             }
-            if (ps!=null) {
+            if (ps != null) {
                 ps.close();
             }
-            if (conn!=null) {
+            if (conn != null) {
                 conn.close();
             }
         } catch (SQLException e) {
@@ -64,9 +79,9 @@ public class SQLConnector {
         }
     }
 
-    public static Map<String, Object> setMap(Object obj, ResultSet rs){
-        HashMap<String, Object> hm=new HashMap<>();
-        Field[] fields=obj.getClass().getDeclaredFields();
+    public static Map<String, Object> setMap(Object obj, ResultSet rs) {
+        HashMap<String, Object> hm = new HashMap<>();
+        Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             try {
                 hm.put(field.getName(), rs.getObject(field.getName()));
