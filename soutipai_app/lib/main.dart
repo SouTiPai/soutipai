@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:soutipai_app/common/route.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/result_page',
+      initialRoute: '/photograph_page',
       onGenerateRoute: onGenerateRoute,
     );
   }
