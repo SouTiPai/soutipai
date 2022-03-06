@@ -3,12 +3,11 @@ package com.soutipai.po;
 import java.sql.Date;
 
 public class Customer {
-    private int id;
-    private String name;
-    private String email;
-    private Date birth;
+    int id;
+    String name;
+    String email;
+    Date birth;
 
-    public Customer(){}
     public Customer(int id, String name, String email, Date birth) {
         this.id = id;
         this.name = name;
