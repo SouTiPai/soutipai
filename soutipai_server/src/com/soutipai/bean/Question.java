@@ -1,4 +1,4 @@
-package com.soutipai.po;
+package com.soutipai.bean;
 
 public class Question {
     String id;

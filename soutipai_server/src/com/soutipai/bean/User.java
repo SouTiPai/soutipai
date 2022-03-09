@@ -1,4 +1,6 @@
-package com.soutipai.po;
+package com.soutipai.bean;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.sql.Date;
 
@@ -9,9 +11,24 @@ public class User {
     String userPassword;
     int userAge;
     String userSex;
+    @JSONField(format = "yyyy-MM-dd")
     Date userBirthday;
     int userClass;
-    int userLevel;
+    int userLevel = 1;
+
+    public User(){}
+
+    public User(String id, String userId, String userName, String userPassword, int userAge, String userSex, Date userBirthday, int userClass, int userLevel) {
+        this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userAge = userAge;
+        this.userSex = userSex;
+        this.userBirthday = userBirthday;
+        this.userClass = userClass;
+        this.userLevel = userLevel;
+    }
 
     public String getId() {
         return id;
