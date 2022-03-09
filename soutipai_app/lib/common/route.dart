@@ -13,7 +13,7 @@ final routes = {
   "/more_page":(context)=>more(),
   "/crop_picture_page":(context)=>ScreenDemo(),
   "/photograph_page":(context)=>ImagePickerWidget(),
-  "/home_page":(context)=>MyHomePage(),
+  "/home_page":(context)=>MyHomePage(title: "搜题派"),
 };
 
 var onGenerateRoute = (RouteSettings settings) {
