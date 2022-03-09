@@ -1,7 +1,9 @@
+//file:noinspection GrUnresolvedAccess
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
+        //noinspection GroovyAssignabilityCheck
         localProperties.load(reader)
     }
 }
@@ -38,7 +40,7 @@ android {
     compileSdkVersion 31
     //build tools的版本，其中包括了打包工具aapt、dx等等。
     //这个工具的目录位于你的sdk目录/build-tools/下
-    buildToolsVersion '30.0.0'
+    buildToolsVersion '30.0.3'
 
     /*
     //关闭Android Studio的PNG合法性检查

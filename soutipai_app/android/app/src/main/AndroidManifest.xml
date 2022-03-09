@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.soutipai_app">
-   <application
+   <!--suppress AndroidDomInspection -->
+    <application
         android:label="soutipai_app"
         android:icon="@mipmap/ic_launcher">
+        <!--suppress AndroidDomInspection -->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -14,6 +16,7 @@
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
+            <!--suppress AndroidDomInspection -->
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
@@ -23,6 +26,7 @@
                  screen fades out. A splash screen is useful to avoid any visual
                  gap between the end of Android's launch screen and the painting of
                  Flutter's first frame. -->
+            <!--suppress AndroidDomInspection -->
             <meta-data
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
