@@ -1,4 +1,4 @@
-package com.soutipai.util;
+package com.soutipai.utils;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.apache.commons.dbutils.DbUtils;

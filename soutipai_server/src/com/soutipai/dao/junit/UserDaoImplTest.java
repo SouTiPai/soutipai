@@ -3,7 +3,7 @@ package com.soutipai.dao.junit;
 import com.alibaba.fastjson.JSON;
 import com.soutipai.dao.UserDaoImpl;
 import com.soutipai.bean.User;
-import com.soutipai.util.JDBCUtils;
+import com.soutipai.utils.JDBCUtils;
 import org.junit.Test;
 
 import java.sql.Connection;
