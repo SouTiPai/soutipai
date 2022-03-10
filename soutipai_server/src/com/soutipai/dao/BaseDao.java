@@ -141,6 +141,7 @@ public abstract class BaseDao<T> {
      * @return T 返回对象
      * @author wutong
      */
+    @SuppressWarnings("unchecked")
     public <E> E getValue(Connection conn, String sql, Object... args) {
         QueryRunner runner = new QueryRunner();
         ScalarHandler<T> handler = new ScalarHandler<>();

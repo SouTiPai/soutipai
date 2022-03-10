@@ -10,7 +10,7 @@ import 'package:extended_image/extended_image.dart';
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: screendemo (),
+      body: screenDemo (),
     );
   }
 }

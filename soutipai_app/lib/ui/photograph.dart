@@ -342,7 +342,6 @@ Widget getPhotoPreview() {
 // ----------------------------------------------------------------
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   const ImagePickerWidget({Key? key}) : super(key: key);
@@ -354,7 +353,6 @@ class ImagePickerWidget extends StatefulWidget {
 }
 
 class _ImagePickerState extends State<ImagePickerWidget> {
-  var _imgPath;
 
   @override
   Widget build(BuildContext context) {
@@ -419,33 +417,18 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   }
 
   /*图片控件*/
-  Widget _ImageView(imgPath) {
-    if (imgPath == null) {
-      return const Center(
-        child: Text("请选择图片或拍照"),
-      );
-    } else {
-      return Image.file(
-        imgPath,
-      );
-    }
-  }
 
 
   /*拍照*/
   _takePhoto() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.camera);
 
     setState(() {
-      _imgPath = image;
     });
   }
 
   /*相册*/
   _openGallery() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
-      _imgPath = image;
     });
   }
 }
@@ -461,7 +444,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return const Scaffold(
-//       body: screendemo (),
+//       body: screenDemo (),
 //     );
 //   }
 // }

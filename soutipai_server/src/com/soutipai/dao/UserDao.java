@@ -56,7 +56,7 @@ public interface UserDao {
     /**
      * 返回数据表中记录的条目数
      *
-     * @param conn
+     * @param conn 数据库链接
      * @return long 记录条数
      */
     Long getCount(Connection conn);
