@@ -346,7 +346,7 @@ import 'package:image_picker/image_picker.dart';
 
 
 class ImagePickerWidget extends StatefulWidget {
-  //const ImagePickerWidget({Key? key}) : super(key: key);
+  const ImagePickerWidget({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
