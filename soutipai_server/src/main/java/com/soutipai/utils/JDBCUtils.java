@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.apache.commons.dbutils.DbUtils;
 
 import javax.sql.DataSource;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class JDBCUtils {
     static{
         try {
             Properties pros = new Properties();
-            InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("druid.properties");
+            InputStream is = new FileInputStream("soutipai_server\\src\\main\\resources\\druid.properties");
             pros.load(is);
             source = DruidDataSourceFactory.createDataSource(pros);
         } catch (Exception e) {
