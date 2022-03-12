@@ -2,7 +2,7 @@ package com.soutipai.jdbc.test;
 
 import com.soutipai.bean.Customer;
 import com.soutipai.dao.UserDaoImpl;
-import com.soutipai.util.JDBCUtils;
+import com.soutipai.utils.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.junit.Test;

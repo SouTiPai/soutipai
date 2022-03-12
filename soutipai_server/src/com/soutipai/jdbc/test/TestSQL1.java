@@ -1,7 +1,7 @@
 package com.soutipai.jdbc.test;
 
 import com.soutipai.bean.Customer;
-import com.soutipai.util.JDBCUtils;
+import com.soutipai.utils.JDBCUtils;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;

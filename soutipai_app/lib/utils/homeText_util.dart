@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
@@ -39,7 +40,7 @@ class HomeTextWidget{
         height: height,
         fontWeight: fontWeight,
         decoration: TextDecoration.none,
-        color: Color.fromRGBO(0, 0, 0, 1.0),
+        color: const Color.fromRGBO(0, 0, 0, 1.0),
         wordSpacing: wordSpacing,
       ),
     );

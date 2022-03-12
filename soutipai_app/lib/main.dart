@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/photograph_page',
+      initialRoute: '/wrong_questions_book_page',
       onGenerateRoute: onGenerateRoute,
     );
   }
