@@ -63,6 +63,17 @@ class WrongQuestionsBookState extends State<WrongQuestionsBook> {
                     ),
                   ),
 
+                  //返回按钮
+                  Positioned(
+                    child:IconButton(
+                      icon:Icon(Icons.keyboard_arrow_left),
+                      onPressed:()=>Navigator.pushNamed(context,'/home_page'),
+                      iconSize: 40,
+                    ),
+                    left:10,
+                    top:25,
+                  )
+
                 ]
             ),
 
