@@ -6,6 +6,13 @@
     <option name="priority" value="Medium" />
     <option name="excludeFilter" value="" />
   </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/soutipai_server/pom.xml" />
+      </list>
+    </option>
+  </component>
   <component name="PWA">
     <option name="enabled" value="true" />
     <option name="wasEnabledAtLeastOnce" value="true" />

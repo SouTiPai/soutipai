@@ -13,7 +13,7 @@ class ResultPage extends StatefulWidget {
 class ResultState extends State<ResultPage> {
   //模拟数据
   String _question = "在开发中，我们经常会用到输入框，那么在 flutter 中，如何获取当前输入框中的文本内容呢？";
-  List _listData = [
+  final List _listData = [
     {"id": 1, "question": "Question1", "answer": "Answer1"},
     {"id": 2, "question": "Question2", "answer": "Answer2"},
     {"id": 3, "question": "Question3", "answer": "Answer3"},
@@ -25,14 +25,14 @@ class ResultState extends State<ResultPage> {
   bool _visible = false; //文本修改框是否可见
   double _minHeight = 200;
 
-  var _questionText = new TextEditingController();
+  var _questionText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //此处实现题目选择
-    Widget answerSelector = new Container(
-      padding: EdgeInsets.all(8.0),
-      child: new Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+    Widget answerSelector = Container(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Wrap(
           spacing: 0,
           runSpacing: 5.0,
@@ -45,7 +45,7 @@ class ResultState extends State<ResultPage> {
     );
 
     //此处实现题目解析
-    Widget answerSection = new Column(
+    Widget answerSection = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Stack(
@@ -69,7 +69,7 @@ class ResultState extends State<ResultPage> {
                     _visible = !_visible;
                   });
                 },
-                child: Image(
+                child: const Image(
                   image: AssetImage("assets/images/result/lamp.png"),
                   fit: BoxFit.cover,
                   height: 80,
@@ -87,7 +87,7 @@ class ResultState extends State<ResultPage> {
           alignment: const FractionalOffset(0.5, 0.7),
           children: [
             Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 minHeight: 130,
               ),
               child: Column(
@@ -102,7 +102,7 @@ class ResultState extends State<ResultPage> {
               right: 0,
               child: MaterialButton(
                 onPressed: _addCollection,
-                child: Image(
+                child: const Image(
                   image: AssetImage("assets/images/result/cloud.png"),
                   fit: BoxFit.cover,
                   height: 40,
@@ -120,28 +120,28 @@ class ResultState extends State<ResultPage> {
     );
 
     //此处为底部图片按钮实现
-    Widget buttonSection = new Container(
-      child: new Row(
+    Widget buttonSection = Container(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildButtonColumn(
-              Image(
+              const Image(
                 image: AssetImage("assets/images/result/photo_another.png"),
                 fit: BoxFit.cover,
                 height: 70,
                 width: 70,
               ),
               () => Navigator.pushNamed(context, "/"), //TODO:此处为返回首页路由
-              CircleBorder()),
+              const CircleBorder()),
           _buildButtonColumn(
-              Image(
+              const Image(
                 image: AssetImage("assets/images/result/go_home.png"),
                 fit: BoxFit.cover,
                 height: 70,
                 width: 70,
               ),
-              () => Navigator.pushNamed(context, "/"), //TODO:此处为再拍一题路由
-              CircleBorder()),
+              () => Navigator.pushNamed(context, "/photograph_page"), //TODO:此处为再拍一题路由
+              const CircleBorder()),
         ],
       ),
     );
@@ -150,7 +150,7 @@ class ResultState extends State<ResultPage> {
       body: Container(
           child: RefreshIndicator(
         onRefresh: _refresh,
-        child: new ListView(
+        child: ListView(
           children: [
             _buildTExtField(_question), //文本框
             answerSelector, //题目选择
@@ -182,23 +182,25 @@ class ResultState extends State<ResultPage> {
         ),
         color: index == _selected ? Colors.red : Colors.white,
         splashColor: Colors.grey,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         minWidth: 30,
       );
-    } else
+    } else {
+      // ignore: sized_box_for_whitespace
       return Container(
         width: 0,
         height: 0,
       );
+    }
   }
 
   //构建底部跳转按钮
   Column _buildButtonColumn(Image image, Function function, ShapeBorder border) {
-    return new Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        new MaterialButton(
+        MaterialButton(
           onPressed: () {
             function();
           },
@@ -211,17 +213,17 @@ class ResultState extends State<ResultPage> {
 
   //构建Container
   Container _buildContainer(String string) {
-    return new Container(
+    return Container(
         height: 70,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/result/text_background.png"),
                 fit: BoxFit.fill)),
         child: Center(
           child: Text(
-            "$string",
+            string,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'LiShu',
               fontSize: 35,
             ),
@@ -231,19 +233,19 @@ class ResultState extends State<ResultPage> {
 
   //构建Card
   Card _buildCard(String string) {
-    return new Card(
-      color: Color(0xfff3c3c3),
+    return Card(
+      color: const Color(0xfff3c3c3),
       shadowColor: Colors.grey,
       elevation: 5,
       borderOnForeground: false,
-      margin: EdgeInsets.fromLTRB(50, 5, 50, 5),
+      margin: const EdgeInsets.fromLTRB(50, 5, 50, 5),
       child: Container(
         constraints: BoxConstraints(minHeight: _minHeight),
-        margin: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.all(10.0),
         alignment: Alignment.center,
         child: Text(
           "${_listData[_selected][string]}",
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 15,
           ),
         ),
@@ -258,13 +260,13 @@ class ResultState extends State<ResultPage> {
       child: Visibility(
         visible: _visible ? true : false,
         child: Container(
-          margin: EdgeInsets.all(8.0),
-          color: Color.fromARGB(255, 244, 244, 246),
+          margin: const EdgeInsets.all(8.0),
+          color: const Color.fromARGB(255, 244, 244, 246),
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "题目修改",
                 style: TextStyle(
                   fontFamily: 'LiShu',
@@ -272,12 +274,12 @@ class ResultState extends State<ResultPage> {
                 ),
               ),
               Card(
-                color: Color(0xfff3c3c3),
+                color: const Color(0xfff3c3c3),
                 shadowColor: Colors.grey,
                 elevation: 5,
                 borderOnForeground: false,
                 child: Container(
-                  margin: EdgeInsets.all(15.0),
+                  margin: const EdgeInsets.all(15.0),
                   child: TextField(
                     controller: _questionText,
                     keyboardType: TextInputType.text,
