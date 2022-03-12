@@ -12,7 +12,7 @@ final routes = {
   "/wrong_questions_book_page": (context) => const WrongQuestionsBook(),
   "/more_page": (context) => const more(),
   "/crop_picture_page": (context) => const ScreenDemo(),
-  "/photograph_page": (context) => const ImagePickerWidget(),
+  "/photograph_page": (context) =>  ImagePickerWidget(),
   "/home_page": (context) => const MyHomePage(title: "搜题派"),
 };
 
