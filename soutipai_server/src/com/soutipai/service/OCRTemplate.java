@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 通用文字识别
+ * 通用文字识别1
  */
 public class OCRTemplate {
 
