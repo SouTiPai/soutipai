@@ -421,7 +421,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   /*图片控件*/
   Widget _ImageView(imgPath) {
     if (imgPath == null) {
-      return Center(
+      return const Center(
         child: Text("请选择图片或拍照"),
       );
     } else {
@@ -434,7 +434,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
 
   /*拍照*/
   _takePhoto() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
 
     setState(() {
       _imgPath = image;
@@ -443,7 +443,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
 
   /*相册*/
   _openGallery() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
       _imgPath = image;
     });
