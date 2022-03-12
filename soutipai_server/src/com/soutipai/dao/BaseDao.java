@@ -1,6 +1,6 @@
 package com.soutipai.dao;
 
-import com.soutipai.util.JDBCUtils;
+import com.soutipai.utils.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;

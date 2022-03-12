@@ -1,7 +1,7 @@
 package com.soutipai.dao;
 
 import com.soutipai.bean.User;
-import com.soutipai.util.JDBCUtils;
+import com.soutipai.utils.JDBCUtils;
 
 import java.sql.Connection;
 import java.util.List;
