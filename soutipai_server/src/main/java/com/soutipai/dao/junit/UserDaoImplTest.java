@@ -95,18 +95,19 @@ public class UserDaoImplTest {
         }
     }
 
-    @Test
-    public void getAll() {
+
+    public String getAll() {
         Connection conn = null;
         try {
             conn = JDBCUtils.getConnection();
             List<User> list = dao.getAll(conn);
-            System.out.println(JSON.toJSONString(list));
+            return JSON.toJSONString(list);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn);
         }
+        return null;
     }
 
     @Test

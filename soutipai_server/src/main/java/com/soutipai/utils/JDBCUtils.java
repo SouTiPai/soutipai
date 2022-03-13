@@ -25,7 +25,7 @@ public class JDBCUtils {
     static{
         try {
             Properties pros = new Properties();
-            InputStream is = new FileInputStream("soutipai_server\\src\\main\\resources\\druid.properties");
+            InputStream is = new FileInputStream("soutipai_server/src/main/resources/druid.properties");
             pros.load(is);
             source = DruidDataSourceFactory.createDataSource(pros);
         } catch (Exception e) {
