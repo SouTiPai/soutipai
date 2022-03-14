@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class ResultPage extends StatefulWidget {
   const ResultPage({Key? key}) : super(key: key);
@@ -13,7 +16,7 @@ class ResultPage extends StatefulWidget {
 class ResultState extends State<ResultPage> {
   //模拟数据
   String _question = "在开发中，我们经常会用到输入框，那么在 flutter 中，如何获取当前输入框中的文本内容呢？";
-  final List _listData = [
+  List _listData = [
     {"id": 1, "question": "Question1", "answer": "Answer1"},
     {"id": 2, "question": "Question2", "answer": "Answer2"},
     {"id": 3, "question": "Question3", "answer": "Answer3"},
@@ -255,7 +258,7 @@ class ResultState extends State<ResultPage> {
 
   //构建文本框
   Widget _buildTExtField(String text) {
-    _questionText = new TextEditingController(text: text);
+    _questionText = TextEditingController(text: text);
     return SingleChildScrollView(
       child: Visibility(
         visible: _visible ? true : false,
@@ -294,17 +297,30 @@ class ResultState extends State<ResultPage> {
     );
   }
 
-  //TODO: 下拉刷新，待实现
+  //下拉刷新
   Future _refresh() async {
-    if (_visible) {
       setState(() {
         _minHeight = 200;
-        _question = _questionText.text;
+        if (_visible) {
+          _question = _questionText.text;
         _visible = !_visible;
-        print("下拉刷新");
-        //TODO:实现刷新
+        }
+        _getData();
       });
+  }
+
+  //TODO: 获取数据，待实现
+  Future _getData() async{
+    var apiUrl='http://10.0.2.2:8080/hello';
+    var result=await http.get(Uri.parse(apiUrl));
+    if(result.statusCode==200){
+      print(json.decode(result.body));
+    }else{
+      print(result.statusCode);
     }
+    /*setState(() {
+      _listData = json.decode(result.body);
+    });*/
   }
 
   //TODO: 添加收藏，待实现

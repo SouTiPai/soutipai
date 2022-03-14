@@ -1,1 +1,0 @@
-##该包内放置Servlet接口，通常实现HttpServlet接口，它能够处理HTTP请求的servlet，它在原有Servlet接口上添加了一些与HTTP协议处理方法，它比Servlet接口的功能更为强大。
