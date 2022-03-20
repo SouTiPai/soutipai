@@ -363,7 +363,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
           child: Column(
             children: [
               TextButton(                                                            //返回home界面按钮
-                  onPressed: () => Navigator.pushNamed(context, '/'),
+                  onPressed: () => Navigator.pushNamed(context, '/home_page'),
                   child: Image.asset(
                     'assets/images/photograph/goback.png',
                     width: 50,height: 50,
@@ -389,21 +389,21 @@ class _ImagePickerState extends State<ImagePickerWidget> {
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                TextButton(                                                            //返回home界面按钮
+                TextButton(                                                            //调用相册按钮
                     onPressed: _openGallery,//() => Navigator.pushNamed(context, 'trypage'),
                     child: Image.asset(
                       'assets/images/photograph/photograph_storage_picture.png',
                       width: 50,height: 50,
                     )
                 ),
-                TextButton(
+                TextButton(                                                             //调用拍照按钮
                     onPressed:_takePhoto,
                     child: Image.asset(
                         'assets/images/photograph/photograph_picture.png',
                         width: 100,height: 100
                     )
                 ),
-                TextButton(                                                            //返回home界面按钮
+                TextButton(                                                            //调用手电筒按钮
                     onPressed: _openGallery,//() => Navigator.pushNamed(context, 'trypage'),
                     child: Image.asset(
                       'assets/images/photograph/flashlight.png',
