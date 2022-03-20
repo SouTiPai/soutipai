@@ -14,6 +14,7 @@ final routes = {
   "/crop_picture_page": (context) => const ScreenDemo(),
   "/photograph_page": (context) => const ImagePickerWidget(),
   "/home_page": (context) => const MyHomePage(title: "搜题派"),
+
 };
 
 // ignore: prefer_function_declarations_over_variables
