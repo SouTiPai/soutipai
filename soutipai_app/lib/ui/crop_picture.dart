@@ -56,7 +56,7 @@ class _ScreenDemoState extends State<ScreenDemo> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   TextButton(                                                            //返回拍照界面按钮
-                      onPressed: () => Navigator.pushNamed(context, 'trypage'),
+                      onPressed: () => Navigator.pushNamed(context, '/photograph_page'),
                       child: Image.asset(
                         'assets/images/screenshot/2.png',
                         width: 50,height: 50,
