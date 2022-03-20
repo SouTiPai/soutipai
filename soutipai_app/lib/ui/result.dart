@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ResultPage extends StatefulWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  final arguments;
+
+  ResultPage({Key? key, this.arguments}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return ResultState();
+    return new ResultState();
   }
 }
 
 class ResultState extends State<ResultPage> {
   //模拟数据
-  String _question = "在开发中，我们经常会用到输入框，那么在 flutter 中，如何获取当前输入框中的文本内容呢？";
+  String _question="";
   List _listData = [
     {"id": 1, "questionName": "Question1", "questionAnswer": "Answer1"},
   ];
@@ -24,6 +26,12 @@ class ResultState extends State<ResultPage> {
   double _minHeight = 200;
 
   var _questionText = TextEditingController();
+
+  @override
+  void initState(){
+    super.initState();
+    _question=widget.arguments["question"];
+  }
 
   @override
   Widget build(BuildContext context) {
