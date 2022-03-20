@@ -3,8 +3,6 @@ import 'package:soutipai_app/ui/photograph.dart';
 import 'package:soutipai_app/ui/wrong_questions_book.dart';
 import 'package:soutipai_app/utils/homeText_util.dart';
 
-import 'more.dart';
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -21,6 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // 图片作为底层
         Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -79,31 +78,32 @@ class _MyHomePageState extends State<MyHomePage> {
         Positioned(
           top: MediaQuery.of(context).size.height * 0.58,
           left: MediaQuery.of(context).size.width * 0.36,
-          //onTap: () => Navigator.pushNamed(context, '/photograph_page'),
           child: MaterialButton(
+            highlightElevation: 0,
+            hoverColor: Color.fromRGBO(0, 0, 0, 0.0),
+            highlightColor: Color.fromRGBO(0, 0, 0, 0.0),
+            splashColor: Colors.transparent,
+            // 触发区域
             child: Container(
               width: MediaQuery.of(context).size.width * 0.32,
               height: MediaQuery.of(context).size.height * 0.14,
-              //color: Color.fromRGBO(222, 6, 6, 1.0),
             ),
             onPressed: () => Navigator.pushNamed(context, '/photograph_page'),
           ),
-          /*child: Container(
-            width: MediaQuery.of(context).size.width * 0.32,
-            height: MediaQuery.of(context).size.height * 0.14,
-            color: Color.fromRGBO(222, 6, 6, 0.7),
-          ),*/
         ),
         // 进入错题本
         Positioned(
           top: MediaQuery.of(context).size.height * 0.74,
           left: MediaQuery.of(context).size.width * 0.29,
-          //onTap: () => Navigator.pushNamed(context, '/wrong_questions_book_page'),
           child: MaterialButton(
+            highlightElevation: 0,
+            hoverColor: Color.fromRGBO(0, 0, 0, 0.0),
+            highlightColor: Color.fromRGBO(0, 0, 0, 0.0),
+            splashColor: Colors.transparent,
+            // 触发区域
             child: Container(
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.12,
-              //color: Color.fromRGBO(45, 213, 26, 1.0),
             ),
             onPressed: () => Navigator.pushNamed(context, '/wrong_questions_book_page'),
           ),
@@ -112,12 +112,15 @@ class _MyHomePageState extends State<MyHomePage> {
         Positioned(
           top: MediaQuery.of(context).size.height * 0.75,
           left: MediaQuery.of(context).size.width * 0.52,
-          //onTap: ()=>Navigator.pushNamed(context,'/more_page'),
           child: MaterialButton(
+            highlightElevation: 0,
+            hoverColor: Color.fromRGBO(0, 0, 0, 0.0),
+            highlightColor: Color.fromRGBO(0, 0, 0, 0.0),
+            splashColor: Colors.transparent,
+            // 触发区域
             child: Container(
               width: MediaQuery.of(context).size.width * 0.12,
               height: MediaQuery.of(context).size.height * 0.1,
-              //color: Color.fromRGBO(8, 74, 196, 1.0),
             ),
             onPressed: () => Navigator.pushNamed(context, '/more_page'),
           ),
