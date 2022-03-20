@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:soutipai_app/utils/HTTP.dart';
 
 class ResultPage extends StatefulWidget {
   final arguments;
@@ -313,16 +314,8 @@ class ResultState extends State<ResultPage> {
   //TODO: 获取数据，待实现
   Future _getData() async {
     print("begin");
-    var uri =
-        Uri.http("192.168.153.188:8080", "/getAnswer", {'question': _question});
-    var result = await http.get(uri);
-    if (result.statusCode == 200) {
-      print(result.body);
-    } else {
-      print(result.statusCode);
-    }
-    setState(() {
-      _listData = json.decode(result.body);
+    setState(() async {
+      _listData = await getDataFromService().getData("/getAnswer",{'question': _question});
     });
   }
 
