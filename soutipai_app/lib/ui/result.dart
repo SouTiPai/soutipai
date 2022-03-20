@@ -17,35 +17,34 @@ class ResultState extends State<ResultPage> {
   //模拟数据
   String _question = "在开发中，我们经常会用到输入框，那么在 flutter 中，如何获取当前输入框中的文本内容呢？";
   List _listData = [
-    {"id": 1, "question": "Question1", "answer": "Answer1"},
-    {"id": 2, "question": "Question2", "answer": "Answer2"},
-    {"id": 3, "question": "Question3", "answer": "Answer3"},
-    {"id": 4, "question": "Question4", "answer": "Answer4"},
-    {"id": 5, "question": "Question5", "answer": "Answer5"},
-    {"id": 6, "question": "Question6", "answer": "Answer6"},
+    {"id": 1, "questionName": "Question1", "questionAnswer": "Answer1"},
   ];
   int _selected = 0; //选择的题目
   bool _visible = false; //文本修改框是否可见
   double _minHeight = 200;
 
   var _questionText = TextEditingController();
+  var _httpText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //此处实现题目选择
-    Widget answerSelector = Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Wrap(
-          spacing: 0,
-          runSpacing: 5.0,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: List.generate(_listData.length, (index) {
-            return _buildButton(index);
-          }),
-        ),
-      ]),
-    );
+    Widget answerSelector = Container();
+    if (_listData.isNotEmpty) {
+      answerSelector = Container(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Wrap(
+            spacing: 0,
+            runSpacing: 5.0,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: List.generate(_listData.length, (index) {
+              return _buildButton(index);
+            }),
+          ),
+        ]),
+      );
+    }
 
     //此处实现题目解析
     Widget answerSection = Column(
@@ -58,7 +57,7 @@ class ResultState extends State<ResultPage> {
               child: Column(
                 children: [
                   _buildContainer("题目"),
-                  _buildCard("question"),
+                  _buildCard("questionName"),
                 ],
               ),
             ),
@@ -96,7 +95,7 @@ class ResultState extends State<ResultPage> {
               child: Column(
                 children: [
                   _buildContainer("解析"),
-                  _buildCard("answer"),
+                  _buildCard("questionAnswer"),
                 ],
               ),
             ),
@@ -143,7 +142,8 @@ class ResultState extends State<ResultPage> {
                 height: 70,
                 width: 70,
               ),
-              () => Navigator.pushNamed(context, "/photograph_page"), //TODO:此处为再拍一题路由
+              () => Navigator.pushNamed(context, "/photograph_page"),
+              //TODO:此处为再拍一题路由
               const CircleBorder()),
         ],
       ),
@@ -155,10 +155,11 @@ class ResultState extends State<ResultPage> {
         onRefresh: _refresh,
         child: ListView(
           children: [
-            _buildTExtField(_question), //文本框
+            _buildTextField(_question), //文本框
             answerSelector, //题目选择
             answerSection,
             buttonSection
+            // _buildHttpField(_http)
           ],
         ),
       )),
@@ -190,10 +191,7 @@ class ResultState extends State<ResultPage> {
       );
     } else {
       // ignore: sized_box_for_whitespace
-      return Container(
-        width: 0,
-        height: 0,
-      );
+      return const Offstage();
     }
   }
 
@@ -247,7 +245,7 @@ class ResultState extends State<ResultPage> {
         margin: const EdgeInsets.all(10.0),
         alignment: Alignment.center,
         child: Text(
-          "${_listData[_selected][string]}",
+          _listData.isEmpty ? "" : "${_listData[_selected][string]}",
           style: const TextStyle(
             fontSize: 15,
           ),
@@ -257,7 +255,7 @@ class ResultState extends State<ResultPage> {
   }
 
   //构建文本框
-  Widget _buildTExtField(String text) {
+  Widget _buildTextField(String text) {
     _questionText = TextEditingController(text: text);
     return SingleChildScrollView(
       child: Visibility(
@@ -297,30 +295,74 @@ class ResultState extends State<ResultPage> {
     );
   }
 
+  Widget _buildHttpField(String text) {
+    _httpText = TextEditingController(text: text);
+    return SingleChildScrollView(
+      child: Visibility(
+        visible: true,
+        child: Container(
+          margin: const EdgeInsets.all(8.0),
+          color: const Color.fromARGB(255, 244, 244, 246),
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "设置http端口",
+                style: TextStyle(
+                  fontFamily: 'LiShu',
+                  fontSize: 30,
+                ),
+              ),
+              Card(
+                color: const Color(0xfff3c3c3),
+                shadowColor: Colors.grey,
+                elevation: 5,
+                borderOnForeground: false,
+                child: Container(
+                  margin: const EdgeInsets.all(15.0),
+                  child: TextField(
+                    controller: _httpText,
+                    keyboardType: TextInputType.text,
+                    maxLines: 1,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   //下拉刷新
   Future _refresh() async {
-      setState(() {
-        _minHeight = 200;
-        if (_visible) {
-          _question = _questionText.text;
+    setState(() {
+      _minHeight = 200;
+      if (_visible) {
+        _question = _questionText.text;
         _visible = !_visible;
-        }
-        _getData();
-      });
+      }
+      _getData();
+    });
   }
 
   //TODO: 获取数据，待实现
-  Future _getData() async{
-    var apiUrl='http://10.0.2.2:8080/hello';
-    var result=await http.get(Uri.parse(apiUrl));
-    if(result.statusCode==200){
-      print(json.decode(result.body));
-    }else{
+  Future _getData() async {
+    print("begin");
+    // print(_http);
+    // var uri = Uri.http("10.0.2.2:8080", "/getAnswer", {'question': _question});
+    var uri = Uri.http("192.168.153.188:8080", "/getAnswer", {'question': _question});
+    // var apiUrl='http://10.0.2.2:8080/getAnswer?question=';
+    var result = await http.get(uri);
+    if (result.statusCode == 200) {
+      print(result.body);
+    } else {
       print(result.statusCode);
     }
-    /*setState(() {
+    setState(() {
       _listData = json.decode(result.body);
-    });*/
+    });
   }
 
   //TODO: 添加收藏，待实现
