@@ -1,4 +1,4 @@
-package com.soutipai.service;
+package com.soutipai.utils;
 
 import com.soutipai.utils.Base64Util;
 import com.soutipai.utils.FileUtil;
