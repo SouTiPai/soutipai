@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class GetAnswers {
-    @RequestMapping("/getAnswer")
+    @RequestMapping("/getAnswers")
     public String getAnswer(HttpServletRequest request){
         //System.out.println("connected");
         String question = request.getParameter("question");

@@ -24,7 +24,6 @@ class ResultState extends State<ResultPage> {
   double _minHeight = 200;
 
   var _questionText = TextEditingController();
-  var _httpText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +52,11 @@ class ResultState extends State<ResultPage> {
         Stack(
           alignment: const FractionalOffset(0.5, 0.7),
           children: [
-            Container(
-              child: Column(
-                children: [
-                  _buildContainer("题目"),
-                  _buildCard("questionName"),
-                ],
-              ),
+            Column(
+              children: [
+                _buildContainer("题目"),
+                _buildCard("questionName"),
+              ],
             ),
             Positioned(
               top: 51,
@@ -122,8 +119,7 @@ class ResultState extends State<ResultPage> {
     );
 
     //此处为底部图片按钮实现
-    Widget buttonSection = Container(
-      child: Row(
+    Widget buttonSection = Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildButtonColumn(
@@ -146,12 +142,10 @@ class ResultState extends State<ResultPage> {
               //TODO:此处为再拍一题路由
               const CircleBorder()),
         ],
-      ),
-    );
+      );
 
     return Scaffold(
-      body: Container(
-          child: RefreshIndicator(
+      body: RefreshIndicator(
         onRefresh: _refresh,
         child: ListView(
           children: [
@@ -162,7 +156,7 @@ class ResultState extends State<ResultPage> {
             // _buildHttpField(_http)
           ],
         ),
-      )),
+      )
     );
   }
 
@@ -196,7 +190,8 @@ class ResultState extends State<ResultPage> {
   }
 
   //构建底部跳转按钮
-  Column _buildButtonColumn(Image image, Function function, ShapeBorder border) {
+  Column _buildButtonColumn(
+      Image image, Function function, ShapeBorder border) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -295,46 +290,6 @@ class ResultState extends State<ResultPage> {
     );
   }
 
-  Widget _buildHttpField(String text) {
-    _httpText = TextEditingController(text: text);
-    return SingleChildScrollView(
-      child: Visibility(
-        visible: true,
-        child: Container(
-          margin: const EdgeInsets.all(8.0),
-          color: const Color.fromARGB(255, 244, 244, 246),
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "设置http端口",
-                style: TextStyle(
-                  fontFamily: 'LiShu',
-                  fontSize: 30,
-                ),
-              ),
-              Card(
-                color: const Color(0xfff3c3c3),
-                shadowColor: Colors.grey,
-                elevation: 5,
-                borderOnForeground: false,
-                child: Container(
-                  margin: const EdgeInsets.all(15.0),
-                  child: TextField(
-                    controller: _httpText,
-                    keyboardType: TextInputType.text,
-                    maxLines: 1,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   //下拉刷新
   Future _refresh() async {
     setState(() {
@@ -350,10 +305,8 @@ class ResultState extends State<ResultPage> {
   //TODO: 获取数据，待实现
   Future _getData() async {
     print("begin");
-    // print(_http);
-    // var uri = Uri.http("10.0.2.2:8080", "/getAnswer", {'question': _question});
-    var uri = Uri.http("192.168.153.188:8080", "/getAnswer", {'question': _question});
-    // var apiUrl='http://10.0.2.2:8080/getAnswer?question=';
+    var uri =
+        Uri.http("192.168.153.188:8080", "/getAnswer", {'question': _question});
     var result = await http.get(uri);
     if (result.statusCode == 200) {
       print(result.body);
