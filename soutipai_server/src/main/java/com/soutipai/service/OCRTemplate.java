@@ -21,12 +21,11 @@ public class OCRTemplate {
      * https://ai.baidu.com/file/470B3ACCA3FE43788B5A963BF0B625F3
      * 下载
      */
-    public static String generalBasic() {
+    public static String generalBasic(String filePath) {//接收来自截图完成的图片参数
         // 请求url
         String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic";
         try {
-            // 本地文件路径
-            String filePath = "/Users/liurunxuan/Downloads/哈工大学习/大一年度项目/QQ20211130-0.png";
+
             byte[] imgData = FileUtil.readFileByBytes(filePath);
             String imgStr = Base64Util.encode(imgData);
             String imgParam = URLEncoder.encode(imgStr, StandardCharsets.UTF_8);
@@ -35,7 +34,7 @@ public class OCRTemplate {
 
             // 注意这里仅为了简化编码每一次请求都去获取access_token，线上环境access_token有过期时间， 客户端可自行缓存，过期后重新获取。
             String accessToken = "24.840a4bbbb7f3cb4d222a62ce1f75f2f8.2592000.1649669674.282335-25246795";
-
+            //获取识别结果
             String result = HttpUtil.post(url, accessToken, param);
             System.out.println(result);
             return result;
