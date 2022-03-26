@@ -14,6 +14,7 @@ final routes = {
   "/crop_picture_page": (context,{arguments}) => ScreenDemo(arguments:arguments),
   "/photograph_page": (context) => const ImagePickerWidget(),
   "/home_page": (context) => const MyHomePage(title: "搜题派"),
+  "/camera_page": (context) => const MyHomePage(title: "搜题派"),
 
 };
 

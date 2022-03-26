@@ -19,8 +19,10 @@ dependencies:
   image_cropper: ^1.4.1
   image_editor: any
   image: any
-  image_picker: ^0.8.4+1
+  image_picker: ^0.8.4+11
   http: ^0.13.0
+  camera: ^0.9.4+17
+  path_provider: ^2.0.9
 
 dev_dependencies:
   flutter_test:
