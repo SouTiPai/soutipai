@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soutipai_app/ui/camera.dart';
 import 'package:soutipai_app/ui/crop_picture.dart';
 import 'package:soutipai_app/ui/home.dart';
 import 'package:soutipai_app/ui/more.dart';
@@ -14,7 +15,7 @@ final routes = {
   "/crop_picture_page": (context) => const ScreenDemo(),
   "/photograph_page": (context) => const ImagePickerWidget(),
   "/home_page": (context) => const MyHomePage(title: "搜题派"),
-  "/camera_page": (context) => const MyHomePage(title: "搜题派"),
+  "/camera_page": (context) => CameraPage(),
 
 };
 
