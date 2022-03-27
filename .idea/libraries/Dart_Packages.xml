@@ -121,6 +121,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_custom_camera_pugin">
+          <value>
+            <list>
+              <option value="C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_custom_camera_pugin-0.0.5/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_lints">
           <value>
             <list>
@@ -441,6 +448,7 @@
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/fake_async-1.2.0/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/ffi-1.1.2/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/file-6.1.2/lib" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_custom_camera_pugin-0.0.5/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_lints-1.0.4/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_plugin_android_lifecycle-2.0.5/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/http-0.13.3/lib" />
