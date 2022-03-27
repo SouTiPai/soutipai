@@ -11,7 +11,7 @@ final routes = {
   "/result_page": (context,{arguments}) => ResultPage(arguments: arguments),
   "/wrong_questions_book_page": (context) => const WrongQuestionsBook(),
   "/more_page": (context) => const more(),
-  "/crop_picture_page": (context) => const ScreenDemo(),
+  "/crop_picture_page": (context,{arguments}) => const ScreenDemo(arguments:arguments),
   "/photograph_page": (context) => const ImagePickerWidget(),
   "/home_page": (context) => const MyHomePage(title: "搜题派"),
 
