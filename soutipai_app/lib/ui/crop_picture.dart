@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 
@@ -16,21 +17,32 @@ import 'package:extended_image/extended_image.dart';
 }
 */
 class ScreenDemo extends StatefulWidget {
-  const ScreenDemo({Key? key}) : super(key: key);
+  final arguments;
+
+  ScreenDemo({Key? key, this.arguments}) : super(key: key);
 
   @override
-  _ScreenDemoState createState() => _ScreenDemoState();
+  State<StatefulWidget> createState() {
+    return new _ScreenDemoState();
+  }
 }
 
 class _ScreenDemoState extends State<ScreenDemo> {
 
   final GlobalKey<ExtendedImageEditorState> _editorKey =      //定义key，以方便操作ExtendedImageEditorState
+
   GlobalKey<ExtendedImageEditorState>();
+  late XFile image;
+  void initState(){
+    super.initState();
+    image = widget.arguments["image"];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ExtendedImage.asset(                              //要编辑的照片
+      body:Image.file(File(image.path)),
+      /*ExtendedImage.asset(                              //要编辑的照片
         'assets/images/screenshot/5.jpg',
         fit: BoxFit.contain,
         mode: ExtendedImageMode.editor,                       //图片模式：编辑
@@ -47,7 +59,7 @@ class _ScreenDemoState extends State<ScreenDemo> {
             lineHeight: 1.3,                                  //裁剪框线的粗细
           );
         },
-      ),
+      ),*/
 
       bottomNavigationBar: SingleChildScrollView(
         child: Container(
