@@ -352,7 +352,6 @@ class ImagePickerWidget extends StatefulWidget {
 }
 
 class _ImagePickerState extends State<ImagePickerWidget> {
-  var _imgPath;
 
   @override
   Widget build(BuildContext context) {
@@ -445,8 +444,6 @@ class _ImagePickerState extends State<ImagePickerWidget> {
     () => Navigator.pushNamed(context, "/crop_picture_page",
         arguments: {"image": image});
   }
-
-  _nextPage() {}
 }
 
 /*class Home extends StatelessWidget {
