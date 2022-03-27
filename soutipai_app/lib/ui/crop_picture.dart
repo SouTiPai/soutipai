@@ -1,21 +1,10 @@
-import 'dart:ui';
+import '';
 import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/src/multipart_file.dart' as prefix;
+import 'package:soutipai_app/utils/dio_utils.dart';
 
-
-
-/*class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: screenDemo (),
-    );
-  }
-}
-*/
 class ScreenDemo extends StatefulWidget {
   final arguments;
 
@@ -29,11 +18,14 @@ class ScreenDemo extends StatefulWidget {
 
 class _ScreenDemoState extends State<ScreenDemo> {
 
-  final GlobalKey<ExtendedImageEditorState> _editorKey =      //定义key，以方便操作ExtendedImageEditorState
+  final GlobalKey<
+      ExtendedImageEditorState> _editorKey = //定义key，以方便操作ExtendedImageEditorState
 
   GlobalKey<ExtendedImageEditorState>();
   late XFile image;
-  void initState(){
+  List _listData = [];
+
+  void initState() {
     super.initState();
     image = widget.arguments["image"];
   }
@@ -41,8 +33,8 @@ class _ScreenDemoState extends State<ScreenDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Image.file(File(image.path)),
-      /*ExtendedImage.asset(                              //要编辑的照片
+        body: Image.file(File(image.path)),
+        /*ExtendedImage.asset(                              //要编辑的照片
         'assets/images/screenshot/5.jpg',
         fit: BoxFit.contain,
         mode: ExtendedImageMode.editor,                       //图片模式：编辑
@@ -61,35 +53,39 @@ class _ScreenDemoState extends State<ScreenDemo> {
         },
       ),*/
 
-      bottomNavigationBar: SingleChildScrollView(
-        child: Container(
+        bottomNavigationBar: SingleChildScrollView(
+            child: Container(
               color: Colors.pink[50],
-              child:  Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  TextButton(                                                            //返回拍照界面按钮
-                      onPressed: () => Navigator.pushNamed(context, '/photograph_page'),
+                  TextButton( //返回拍照界面按钮
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/photograph_page'),
                       child: Image.asset(
                         'assets/images/screenshot/2.png',
-                        width: 50,height: 50,
+                        width: 50, height: 50,
                       )
                   ),
                   TextButton(
-                      onPressed:(){
-
-
-
+                      onPressed: () async {
+                        prefix.MultipartFile img = await prefix.MultipartFile.fromFile(
+                            image.path,                                //图片路径
+                            filename: "data"+"/admin/"+DateTime.now().millisecondsSinceEpoch.toString()+".jpg",            //图片名称
+                          );
+                        final res = await HttpUtils.instance.upload("/ocr",params: {"file":img},tips: true);
+                        Navigator.pushNamed(context, "/result_page",arguments: {"question":res.JSON["words_result"]});
                       },
                       child: Image.asset(
                           'assets/images/screenshot/3.png',
-                          width: 100,height: 100
+                          width: 100, height: 100
                       )
                   ),
-                  TextButton(                                                           //图片顺时针旋转90°按钮
+                  TextButton( //图片顺时针旋转90°按钮
                     onPressed: () => _editorKey.currentState?.rotate(),
                     child: Image.asset(
                         'assets/images/screenshot/4.png',
-                        width: 50,height: 50
+                        width: 50, height: 50
                     ),
                   ),
                 ],
@@ -116,9 +112,9 @@ class TryPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child:  Column(
+        child: Column(
           children: [
-            ElevatedButton(onPressed:() => Navigator.pop(context),
+            ElevatedButton(onPressed: () => Navigator.pop(context),
                 child: Text('返回')
             )
           ],

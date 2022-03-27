@@ -9,7 +9,6 @@ import java.util.List;
 
 public class QuestionDaoImpl extends BaseDao<Question> implements QuestionDao {
 
-
     @Override
     public List<Question> getQuestionByName(Connection conn, List<Word> words) {
         String sql = "select id, question_name questionName, question_answer questionAnswer, question_type questionType, question_remark questionRemark from question_table where " +

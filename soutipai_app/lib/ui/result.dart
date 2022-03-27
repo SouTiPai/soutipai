@@ -1,27 +1,22 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:soutipai_app/utils/HTTP.dart';
+import 'package:soutipai_app/utils/dio_utils.dart';
 
 class ResultPage extends StatefulWidget {
   final arguments;
-
-  ResultPage({Key? key, this.arguments}) : super(key: key);
+  const ResultPage({Key? key, this.arguments}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new ResultState();
+    return ResultState();
   }
 }
 
 class ResultState extends State<ResultPage> {
   //模拟数据
   String _question="";
-  List _listData = [
-    {"id": 1, "questionName": "Question1", "questionAnswer": "Answer1"},
-  ];
+  List _listData=[];
   int _selected = 0; //选择的题目
   bool _visible = false; //文本修改框是否可见
   double _minHeight = 200;
@@ -29,9 +24,14 @@ class ResultState extends State<ResultPage> {
   var _questionText = TextEditingController();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _question=widget.arguments["question"];
+    if(widget.arguments["question"]!=null){
+      for(int i=0;i<widget.arguments["question"].length;i++) {
+        _question+=widget.arguments["question"][i];
+      }
+    }
+    Future.delayed(Duration.zero, () => setState(() {_getData();}));
   }
 
   @override
@@ -313,10 +313,9 @@ class ResultState extends State<ResultPage> {
 
   //TODO: 获取数据，待实现
   Future _getData() async {
-    print("begin");
-    setState(() async {
-      _listData = await getDataFromService().getData("/getAnswer",{'question': _question});
-    });
+    final res = await HttpUtils.instance.get("/getAnswers",params: {"question":_question},tips:true);
+    _listData=res.data;
+    setState((){});
   }
 
   //TODO: 添加收藏，待实现
