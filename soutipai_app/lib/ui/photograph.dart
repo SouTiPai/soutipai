@@ -337,13 +337,10 @@ Widget getPhotoPreview() {
 }
 */
 
-
-
 // ----------------------------------------------------------------
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 
 class ImagePickerWidget extends StatefulWidget {
   const ImagePickerWidget({Key? key}) : super(key: key);
@@ -356,65 +353,69 @@ class ImagePickerWidget extends StatefulWidget {
 
 class _ImagePickerState extends State<ImagePickerWidget> {
   var _imgPath;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              TextButton(                                                            //返回home界面按钮
-                  onPressed: () => Navigator.pushNamed(context, '/home_page'),
-                  child: Image.asset(
-                    'assets/images/photograph/goback.png',
-                    width: 50,height: 50,
-                  )
-              ),
-              // _ImageView(_imgPath),
-              //
-              //
-              // ElevatedButton(
-              //   onPressed: _takePhoto,
-              //   child: Text("拍照"),
-              // ),
-              // ElevatedButton(
-              //   onPressed: _openGallery,
-              //   child: Text("选择照片"),
-              // ),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            TextButton(
+                //返回home界面按钮
+                onPressed: () => Navigator.pushNamed(context, '/home_page'),
+                child: Image.asset(
+                  'assets/images/photograph/goback.png',
+                  width: 50,
+                  height: 50,
+                )),
+            // _ImageView(_imgPath),
+            //
+            //
+            // ElevatedButton(
+            //   onPressed: _takePhoto,
+            //   child: Text("拍照"),
+            // ),
+            // ElevatedButton(
+            //   onPressed: _openGallery,
+            //   child: Text("选择照片"),
+            // ),
+          ],
         ),
-        bottomNavigationBar: SingleChildScrollView(
+      ),
+      bottomNavigationBar: SingleChildScrollView(
           child: Container(
-            color: Colors.pink[50],
-            child:  Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                TextButton(                                                            //调用相册按钮
-                    onPressed: _openGallery,//() => Navigator.pushNamed(context, 'trypage'),
-                    child: Image.asset(
-                      'assets/images/photograph/photograph_storage_picture.png',
-                      width: 50,height: 50,
-                    )
-                ),
-                TextButton(                                                             //调用拍照按钮
-                    onPressed:_takePhoto,
-                    child: Image.asset(
-                        'assets/images/photograph/photograph_picture.png',
-                        width: 100,height: 100
-                    )
-                ),
-                TextButton(                                                            //调用手电筒按钮
-                    onPressed: _openGallery,//() => Navigator.pushNamed(context, 'trypage'),
-                    child: Image.asset(
-                      'assets/images/photograph/flashlight.png',
-                      width: 50,height: 50,
-                    )
-                ),
-
-              ],
-            ),
-          )
+        color: Colors.pink[50],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            TextButton(
+                //调用相册按钮
+                onPressed: _openGallery,
+                //() => Navigator.pushNamed(context, 'trypage'),
+                child: Image.asset(
+                  'assets/images/photograph/photograph_storage_picture.png',
+                  width: 50,
+                  height: 50,
+                )),
+            TextButton(
+                //调用拍照按钮
+                onPressed: _takePhoto,
+                child: Image.asset(
+                    'assets/images/photograph/photograph_picture.png',
+                    width: 100,
+                    height: 100)),
+            TextButton(
+                //调用手电筒按钮
+                onPressed: _openGallery,
+                //() => Navigator.pushNamed(context, 'trypage'),
+                child: Image.asset(
+                  'assets/images/photograph/flashlight.png',
+                  width: 50,
+                  height: 50,
+                )),
+          ],
         ),
+      )),
     );
   }
 
@@ -431,22 +432,21 @@ class _ImagePickerState extends State<ImagePickerWidget> {
     }
   }
 
-
   /*拍照*/
   _takePhoto() async {
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
-    setState(() {
-      _imgPath = image;
-    });
+    () => Navigator.pushNamed(context, "/crop_picture_page",
+        arguments: {"image": image});
   }
 
   /*相册*/
   _openGallery() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    setState(() {
-      _imgPath = image;
-    });
+    () => Navigator.pushNamed(context, "/crop_picture_page",
+        arguments: {"image": image});
   }
+
+  _nextPage() {}
 }
 
 /*class Home extends StatelessWidget {
