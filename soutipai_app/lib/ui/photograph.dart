@@ -434,15 +434,19 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   /*拍照*/
   _takePhoto() async {
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
-    Navigator.pushNamed(context, "/crop_picture_page",
-        arguments: {"image": image});
+    if(image!=null){
+      Navigator.pushNamed(context, "/crop_picture_page",
+          arguments: {"image": image});
+    }
   }
 
   /*相册*/
   _openGallery() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    Navigator.pushNamed(context, "/crop_picture_page",
-        arguments: {"image": image});
+    if(image!=null){
+      Navigator.pushNamed(context, "/crop_picture_page",
+          arguments: {"image": image});
+    }
   }
 }
 
