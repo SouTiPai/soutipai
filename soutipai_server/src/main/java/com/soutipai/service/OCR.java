@@ -32,9 +32,7 @@ public class OCR {
                 e.printStackTrace();
                 return "上传失败," + e.getMessage();
             }
-
             return OCRTemplate.generalBasic(file.getOriginalFilename());
-
         } else {
             return "上传失败，因为文件是空的.";
         }

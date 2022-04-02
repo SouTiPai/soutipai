@@ -28,7 +28,7 @@ class ResultState extends State<ResultPage> {
     super.initState();
     if(widget.arguments["question"]!=null){
       for(int i=0;i<widget.arguments["question"].length;i++) {
-        _question+=widget.arguments["question"][i];
+        _question+=widget.arguments["question"][i]["words"];
       }
     }
     Future.delayed(Duration.zero, () => setState(() {_getData();}));
