@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0
-  dio: any
+  dio: ^4.0.4
   toast: ^0.1.5
   cupertino_icons: ^1.0.2
   extended_image: ^4.2.1
@@ -20,6 +20,7 @@ dependencies:
   image_editor: any
   image: any
   image_picker: ^0.8.4+1
+  http: ^0.13.0
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:soutipai_app/utils/dio_utils.dart';
 
 class ResultPage extends StatefulWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  final arguments;
+  const ResultPage({Key? key, this.arguments}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -12,15 +15,8 @@ class ResultPage extends StatefulWidget {
 
 class ResultState extends State<ResultPage> {
   //模拟数据
-  String _question = "在开发中，我们经常会用到输入框，那么在 flutter 中，如何获取当前输入框中的文本内容呢？";
-  final List _listData = [
-    {"id": 1, "question": "Question1", "answer": "Answer1"},
-    {"id": 2, "question": "Question2", "answer": "Answer2"},
-    {"id": 3, "question": "Question3", "answer": "Answer3"},
-    {"id": 4, "question": "Question4", "answer": "Answer4"},
-    {"id": 5, "question": "Question5", "answer": "Answer5"},
-    {"id": 6, "question": "Question6", "answer": "Answer6"},
-  ];
+  String _question="";
+  List _listData=[];
   int _selected = 0; //选择的题目
   bool _visible = false; //文本修改框是否可见
   double _minHeight = 200;
@@ -28,21 +24,35 @@ class ResultState extends State<ResultPage> {
   var _questionText = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    if(widget.arguments["question"]!=null){
+      for(int i=0;i<widget.arguments["question"].length;i++) {
+        _question+=widget.arguments["question"][i]["words"];
+      }
+    }
+    Future.delayed(Duration.zero, () => setState(() {_getData();}));
+  }
+
+  @override
   Widget build(BuildContext context) {
     //此处实现题目选择
-    Widget answerSelector = Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Wrap(
-          spacing: 0,
-          runSpacing: 5.0,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: List.generate(_listData.length, (index) {
-            return _buildButton(index);
-          }),
-        ),
-      ]),
-    );
+    Widget answerSelector = Container();
+    if (_listData.isNotEmpty) {
+      answerSelector = Container(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Wrap(
+            spacing: 0,
+            runSpacing: 5.0,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: List.generate(_listData.length, (index) {
+              return _buildButton(index);
+            }),
+          ),
+        ]),
+      );
+    }
 
     //此处实现题目解析
     Widget answerSection = Column(
@@ -51,13 +61,11 @@ class ResultState extends State<ResultPage> {
         Stack(
           alignment: const FractionalOffset(0.5, 0.7),
           children: [
-            Container(
-              child: Column(
-                children: [
-                  _buildContainer("题目"),
-                  _buildCard("question"),
-                ],
-              ),
+            Column(
+              children: [
+                _buildContainer("题目"),
+                _buildCard("questionName"),
+              ],
             ),
             Positioned(
               top: 51,
@@ -93,7 +101,7 @@ class ResultState extends State<ResultPage> {
               child: Column(
                 children: [
                   _buildContainer("解析"),
-                  _buildCard("answer"),
+                  _buildCard("questionAnswer"),
                 ],
               ),
             ),
@@ -120,8 +128,7 @@ class ResultState extends State<ResultPage> {
     );
 
     //此处为底部图片按钮实现
-    Widget buttonSection = Container(
-      child: Row(
+    Widget buttonSection = Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildButtonColumn(
@@ -140,25 +147,25 @@ class ResultState extends State<ResultPage> {
                 height: 70,
                 width: 70,
               ),
-              () => Navigator.pushNamed(context, "/photograph_page"), //TODO:此处为再拍一题路由
+              () => Navigator.pushNamed(context, "/photograph_page"),
+              //TODO:此处为再拍一题路由
               const CircleBorder()),
         ],
-      ),
-    );
+      );
 
     return Scaffold(
-      body: Container(
-          child: RefreshIndicator(
+      body: RefreshIndicator(
         onRefresh: _refresh,
         child: ListView(
           children: [
-            _buildTExtField(_question), //文本框
+            _buildTextField(_question), //文本框
             answerSelector, //题目选择
             answerSection,
             buttonSection
+            // _buildHttpField(_http)
           ],
         ),
-      )),
+      )
     );
   }
 
@@ -187,15 +194,13 @@ class ResultState extends State<ResultPage> {
       );
     } else {
       // ignore: sized_box_for_whitespace
-      return Container(
-        width: 0,
-        height: 0,
-      );
+      return const Offstage();
     }
   }
 
   //构建底部跳转按钮
-  Column _buildButtonColumn(Image image, Function function, ShapeBorder border) {
+  Column _buildButtonColumn(
+      Image image, Function function, ShapeBorder border) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -244,7 +249,7 @@ class ResultState extends State<ResultPage> {
         margin: const EdgeInsets.all(10.0),
         alignment: Alignment.center,
         child: Text(
-          "${_listData[_selected][string]}",
+          _listData.isEmpty ? "" : "${_listData[_selected][string]}",
           style: const TextStyle(
             fontSize: 15,
           ),
@@ -254,8 +259,8 @@ class ResultState extends State<ResultPage> {
   }
 
   //构建文本框
-  Widget _buildTExtField(String text) {
-    _questionText = new TextEditingController(text: text);
+  Widget _buildTextField(String text) {
+    _questionText = TextEditingController(text: text);
     return SingleChildScrollView(
       child: Visibility(
         visible: _visible ? true : false,
@@ -294,17 +299,23 @@ class ResultState extends State<ResultPage> {
     );
   }
 
-  //TODO: 下拉刷新，待实现
+  //下拉刷新
   Future _refresh() async {
-    if (_visible) {
-      setState(() {
-        _minHeight = 200;
+    setState(() {
+      _minHeight = 200;
+      if (_visible) {
         _question = _questionText.text;
         _visible = !_visible;
-        print("下拉刷新");
-        //TODO:实现刷新
-      });
-    }
+      }
+      _getData();
+    });
+  }
+
+  //TODO: 获取数据，待实现
+  Future _getData() async {
+    final res = await HttpUtils.instance.get("/getAnswers",params: {"question":_question},tips:true);
+    _listData=res.data;
+    setState((){});
   }
 
   //TODO: 添加收藏，待实现
