@@ -419,7 +419,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   }
 
   /*图片控件*/
-  Widget _ImageView(imgPath) {
+  /*Widget _ImageView(imgPath) {
     if (imgPath == null) {
       return const Center(
         child: Text("请选择图片或拍照"),
@@ -429,13 +429,13 @@ class _ImagePickerState extends State<ImagePickerWidget> {
         imgPath,
       );
     }
-  }
+  }*/
 
   /*拍照*/
   _takePhoto() async {
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
     if(image!=null){
-      Navigator.pushNamed(context, "/crop_picture_page",
+      Navigator.popAndPushNamed(context, "/crop_picture_page",
           arguments: {"image": image});
     }
   }
@@ -444,7 +444,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   _openGallery() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if(image!=null){
-      Navigator.pushNamed(context, "/crop_picture_page",
+      Navigator.popAndPushNamed(context, "/crop_picture_page",
           arguments: {"image": image});
     }
   }
