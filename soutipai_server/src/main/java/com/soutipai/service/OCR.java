@@ -1,6 +1,6 @@
 package com.soutipai.service;
 
-import com.soutipai.utils.OCRTemplate;
+import com.soutipai.utils.OCRUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,10 +32,9 @@ public class OCR {
                 e.printStackTrace();
                 return "上传失败," + e.getMessage();
             }
-            return OCRTemplate.generalBasic(file.getOriginalFilename());
+            return OCRUtils.generalBasic(file.getOriginalFilename());
         } else {
             return "上传失败，因为文件是空的.";
         }
-//        return OCRTemplate.generalBasic(filepath);
     }
 }

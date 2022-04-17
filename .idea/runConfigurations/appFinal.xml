@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="appFinal" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="filePath" value="$PROJECT_DIR$/soutipai_app/lib/main.dart" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="SoutipaiServerApplication" run_configuration_type="SpringBootApplicationConfigurationType" />
+    </method>
+  </configuration>
+</component>

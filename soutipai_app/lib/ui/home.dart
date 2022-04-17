@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
                     ),
+                    // ignore: avoid_unnecessary_containers
                     Container(
                       child: const Text(""),
                     ),
@@ -79,10 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
           left: MediaQuery.of(context).size.width * 0.36,
           child: MaterialButton(
             highlightElevation: 0,
-            hoverColor: Color.fromRGBO(0, 0, 0, 0.0),
-            highlightColor: Color.fromRGBO(0, 0, 0, 0.0),
+            hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
+            highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
             splashColor: Colors.transparent,
             // 触发区域
+            // ignore: sized_box_for_whitespace
             child: Container(
               width: MediaQuery.of(context).size.width * 0.32,
               height: MediaQuery.of(context).size.height * 0.14,
@@ -96,10 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
           left: MediaQuery.of(context).size.width * 0.29,
           child: MaterialButton(
             highlightElevation: 0,
-            hoverColor: Color.fromRGBO(0, 0, 0, 0.0),
-            highlightColor: Color.fromRGBO(0, 0, 0, 0.0),
+            hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
+            highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
             splashColor: Colors.transparent,
             // 触发区域
+            // ignore: sized_box_for_whitespace
             child: Container(
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.12,
@@ -113,10 +116,11 @@ class _MyHomePageState extends State<MyHomePage> {
           left: MediaQuery.of(context).size.width * 0.52,
           child: MaterialButton(
             highlightElevation: 0,
-            hoverColor: Color.fromRGBO(0, 0, 0, 0.0),
-            highlightColor: Color.fromRGBO(0, 0, 0, 0.0),
+            hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
+            highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
             splashColor: Colors.transparent,
             // 触发区域
+            // ignore: sized_box_for_whitespace
             child: Container(
               width: MediaQuery.of(context).size.width * 0.12,
               height: MediaQuery.of(context).size.height * 0.1,

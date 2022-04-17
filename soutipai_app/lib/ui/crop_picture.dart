@@ -1,18 +1,19 @@
-import '';
 import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:image_picker/image_picker.dart';
+// ignore: implementation_imports
 import 'package:dio/src/multipart_file.dart' as prefix;
 import 'package:soutipai_app/utils/dio_utils.dart';
 
 class ScreenDemo extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final arguments;
 
-  ScreenDemo({Key? key, this.arguments}) : super(key: key);
+  const ScreenDemo({Key? key, this.arguments}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _ScreenDemoState();
+    return _ScreenDemoState();
   }
 }
 
@@ -23,8 +24,8 @@ class _ScreenDemoState extends State<ScreenDemo> {
 
   GlobalKey<ExtendedImageEditorState>();
   late XFile image;
-  List _listData = [];
 
+  @override
   void initState() {
     super.initState();
     image = widget.arguments["image"];
@@ -71,10 +72,10 @@ class _ScreenDemoState extends State<ScreenDemo> {
                       onPressed: () async {
                         prefix.MultipartFile img = await prefix.MultipartFile.fromFile(
                             image.path,                                //图片路径
-                            filename: "data"+"/admin/"+DateTime.now().millisecondsSinceEpoch.toString()+".jpg",            //图片名称
+                            filename: "data""/admin/"+DateTime.now().millisecondsSinceEpoch.toString()+".jpg",            //图片名称
                           );
                         final res = await HttpUtils.instance.upload("/ocr",params: {"file":img},tips: true);
-                        Navigator.pushNamed(context, "/result_page",arguments: {"question":res.JSON["words_result"]});
+                        Navigator.popAndPushNamed(context, "/result_page",arguments: {"question":res.JSON["words_result"]});
                       },
                       child: Image.asset(
                           'assets/images/screenshot/3.png',
@@ -103,10 +104,11 @@ class TryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('测试'),
-        leading: Icon(Icons.menu),
+        title: const Text('测试'),
+        leading: const Icon(Icons.menu),
+        // ignore: prefer_const_literals_to_create_immutables
         actions: [
-          Icon(Icons.settings)
+          const Icon(Icons.settings)
         ],
         elevation: 0.0,
         centerTitle: true,
@@ -115,7 +117,7 @@ class TryPage extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(onPressed: () => Navigator.pop(context),
-                child: Text('返回')
+                child: const Text('返回')
             )
           ],
         ),

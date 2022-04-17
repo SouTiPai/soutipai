@@ -12,9 +12,7 @@ final routes = {
   "/wrong_questions_book_page": (context) => const WrongQuestionsBook(),
   "/more_page": (context) => const more(),
   "/crop_picture_page": (context,{arguments}) => ScreenDemo(arguments:arguments),
-  "/photograph_page": (context) => const ImagePickerWidget(),
-  "/home_page": (context) => const MyHomePage(title: "搜题派"),
-
+  "/photograph_page": (context) => const ImagePickerWidget()
 };
 
 // ignore: prefer_function_declarations_over_variables
