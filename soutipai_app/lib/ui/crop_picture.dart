@@ -33,7 +33,50 @@ class _ScreenDemoState extends State<ScreenDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Image.file(File(image.path)),
+        body:Column(
+          children:[Image.file(File(image.path)),],
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        ),
+
+      bottomNavigationBar: SingleChildScrollView(
+    child: Container(
+    color: Colors.pink[50],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          TextButton( //返回拍照界面按钮
+              onPressed: () =>
+                  Navigator.pushNamed(context, '/photograph_page'),
+              child: Image.asset(
+                'assets/images/screenshot/2.png',
+                width: 50, height: 50,
+              )
+          ),
+          TextButton(
+              onPressed: () async {
+                prefix.MultipartFile img = await prefix.MultipartFile.fromFile(
+                  image.path,                                //图片路径
+                  filename: "data"+"/admin/"+DateTime.now().millisecondsSinceEpoch.toString()+".jpg",            //图片名称
+                );
+                final res = await HttpUtils.instance.upload("/ocr",params: {"file":img},tips: true);
+                Navigator.pushNamed(context, "/result_page",arguments: {"question":res.JSON["words_result"]});
+              },
+              child: Image.asset(
+                  'assets/images/screenshot/3.png',
+                  width: 100, height: 100
+              )
+          ),
+          TextButton( //图片顺时针旋转90°按钮
+            onPressed: () => _editorKey.currentState?.rotate(),
+            child: Image.asset(
+                'assets/images/screenshot/4.png',
+                width: 50, height: 50
+            ),
+          ),
+        ],
+      ),
+    )
+    )
         /*ExtendedImage.asset(                              //要编辑的照片
         'assets/images/screenshot/5.jpg',
         fit: BoxFit.contain,
@@ -52,75 +95,8 @@ class _ScreenDemoState extends State<ScreenDemo> {
           );
         },
       ),*/
-
-        bottomNavigationBar: SingleChildScrollView(
-            child: Container(
-              color: Colors.pink[50],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  TextButton( //返回拍照界面按钮
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/photograph_page'),
-                      child: Image.asset(
-                        'assets/images/screenshot/2.png',
-                        width: 50, height: 50,
-                      )
-                  ),
-                  TextButton(
-                      onPressed: () async {
-                        prefix.MultipartFile img = await prefix.MultipartFile.fromFile(
-                            image.path,                                //图片路径
-                            filename: "data"+"/admin/"+DateTime.now().millisecondsSinceEpoch.toString()+".jpg",            //图片名称
-                          );
-                        final res = await HttpUtils.instance.upload("/ocr",params: {"file":img},tips: true);
-                        Navigator.pushNamed(context, "/result_page",arguments: {"question":res.JSON["words_result"]});
-                      },
-                      child: Image.asset(
-                          'assets/images/screenshot/3.png',
-                          width: 100, height: 100
-                      )
-                  ),
-                  TextButton( //图片顺时针旋转90°按钮
-                    onPressed: () => _editorKey.currentState?.rotate(),
-                    child: Image.asset(
-                        'assets/images/screenshot/4.png',
-                        width: 50, height: 50
-                    ),
-                  ),
-                ],
-              ),
-            )
-        )
     );
   }
 }
 
-class TryPage extends StatelessWidget {
-  const TryPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('测试'),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            ElevatedButton(onPressed: () => Navigator.pop(context),
-                child: Text('返回')
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
 
