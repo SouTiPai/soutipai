@@ -67,7 +67,7 @@ class WrongQuestionsBookState extends State<WrongQuestionsBook> {
                   Positioned(
                     child:IconButton(
                       icon:Icon(Icons.keyboard_arrow_left),
-                      onPressed:()=>Navigator.pushNamed(context,'/home_page'),
+                      onPressed:()=>Navigator.pushNamed(context,'/'),
                       iconSize: 40,
                     ),
                     left:10,
