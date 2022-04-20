@@ -11,7 +11,8 @@ class more extends StatefulWidget {
 class _moreState extends State<more> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -45,14 +46,16 @@ class _moreState extends State<more> {
                     backgroundColor: Colors.blue,
                     child: Text("店"),
                   ),
-                  label: Text("非遗商店"), // 文本 Widget
+                  label: Text("非遗商店"),
+                  // 文本 Widget
                   labelStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 40,
                     fontFamily: "LiShu",
-                  ), // 文本样式，TextStyle
-                  labelPadding:
-                      EdgeInsets.fromLTRB(20, 48, 27, 50), // 文本外边距 Padding
+                  ),
+                  // 文本样式，TextStyle
+                  labelPadding: EdgeInsets.fromLTRB(20, 48, 27, 50),
+                  // 文本外边距 Padding
                   // Chip 形状
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -73,14 +76,16 @@ class _moreState extends State<more> {
                     backgroundColor: Colors.green,
                     child: Text("错"),
                   ),
-                  label: Text("错题本"), // 文本 Widget
+                  label: Text("错题本"),
+                  // 文本 Widget
                   labelStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 40,
                     fontFamily: "LiShu",
-                  ), // 文本样式，TextStyle
-                  labelPadding:
-                      EdgeInsets.fromLTRB(23, 50, 65, 50), // 文本外边距 Padding
+                  ),
+                  // 文本样式，TextStyle
+                  labelPadding: EdgeInsets.fromLTRB(23, 50, 65, 50),
+                  // 文本外边距 Padding
 
                   // Chip 形状
                   shape: RoundedRectangleBorder(
@@ -102,14 +107,16 @@ class _moreState extends State<more> {
                     backgroundColor: Colors.blue,
                     child: Text("我"),
                   ),
-                  label: Text("我的   "), // 文本 Widget
+                  label: Text("我的   "),
+                  // 文本 Widget
                   labelStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 40,
                     fontFamily: "LiShu",
-                  ), // 文本样式，TextStyle
-                  labelPadding:
-                      EdgeInsets.fromLTRB(45, 45, 60, 40), // 文本外边距 Padding
+                  ),
+                  // 文本样式，TextStyle
+                  labelPadding: EdgeInsets.fromLTRB(45, 45, 60, 40),
+                  // 文本外边距 Padding
 
                   // Chip 形状
                   shape: RoundedRectangleBorder(
@@ -125,6 +132,6 @@ class _moreState extends State<more> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

@@ -352,16 +352,16 @@ class ImagePickerWidget extends StatefulWidget {
 }
 
 class _ImagePickerState extends State<ImagePickerWidget> {
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             TextButton(
                 //返回home界面按钮
-                onPressed: () => Navigator.pushNamed(context, '/home_page'),
+                onPressed: () => Navigator.pushNamed(context, '/'),
                 child: Image.asset(
                   'assets/images/photograph/goback.png',
                   width: 50,
@@ -415,7 +415,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
           ],
         ),
       )),
-    );
+    ));
   }
 
   /*图片控件*/
@@ -434,7 +434,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   /*拍照*/
   _takePhoto() async {
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
-    if(image!=null){
+    if (image != null) {
       Navigator.popAndPushNamed(context, "/crop_picture_page",
           arguments: {"image": image});
     }
@@ -443,7 +443,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   /*相册*/
   _openGallery() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if(image!=null){
+    if (image != null) {
       Navigator.popAndPushNamed(context, "/crop_picture_page",
           arguments: {"image": image});
     }

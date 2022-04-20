@@ -10,13 +10,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final double leading = 0.5;
   final double fontSize = 45;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return SafeArea(
+        child: Stack(
       children: [
         // 图片作为底层
         Container(
@@ -107,7 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.12,
             ),
-            onPressed: () => Navigator.pushNamed(context, '/wrong_questions_book_page'),
+            onPressed: () =>
+                Navigator.pushNamed(context, '/wrong_questions_book_page'),
           ),
         ),
         // 进入更多功能
@@ -129,6 +130,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ],
-    );
+    ));
   }
 }

@@ -28,11 +28,12 @@ class ResultState extends State<ResultPage> {
 
   var _questionText = TextEditingController();
 
-  CountdownController controller = CountdownController(startCount: 5);
+  late CountdownController controller;
 
   @override
   void initState() {
     super.initState();
+    controller = CountdownController(this, startCount: 5);
     if (widget.arguments["question"] != null) {
       for (int i = 0; i < widget.arguments["question"].length; i++) {
         _question += widget.arguments["question"][i]["words"];
@@ -119,6 +120,23 @@ class ResultState extends State<ResultPage> {
                 ),
                 child: Column(
                   children: [
+                    _buildContainer("答案"),
+                    _buildCard("questionAnswer", 20,
+                        cardVisible: _answerVisible),
+                  ],
+                ),
+              ),
+            ],
+          ), //答案部分
+          Stack(
+            alignment: const FractionalOffset(0.5, 0.7),
+            children: [
+              Container(
+                constraints: const BoxConstraints(
+                  minHeight: 130,
+                ),
+                child: Column(
+                  children: [
                     _buildContainer("解析"),
                     _buildCard("questionRemark", _minHeight),
                   ],
@@ -142,24 +160,7 @@ class ResultState extends State<ResultPage> {
                 ),
               ),
             ],
-          ), //解析部分
-          Stack(
-            alignment: const FractionalOffset(0.5, 0.7),
-            children: [
-              Container(
-                constraints: const BoxConstraints(
-                  minHeight: 130,
-                ),
-                child: Column(
-                  children: [
-                    _buildContainer("答案"),
-                    _buildCard("questionAnswer", 20,
-                        cardVisible: _answerVisible),
-                  ],
-                ),
-              ),
-            ],
-          )
+          ) //解析部分
         ],
       );
     } else {
@@ -216,17 +217,18 @@ class ResultState extends State<ResultPage> {
 
     return Scaffold(
         body: RefreshIndicator(
-      onRefresh: _refresh,
-      child: ListView(
-        children: [
-          _buildTextField(_question), //文本框
-          answerSelector, //题目选择
-          answerSection,
-          buttonSection
-          // _buildHttpField(_http)
-        ],
-      ),
-    ));
+            onRefresh: _refresh,
+            child: SafeArea(
+              child: ListView(
+                children: [
+                  _buildTextField(_question), //文本框
+                  answerSelector, //题目选择
+                  answerSection,
+                  buttonSection
+                  // _buildHttpField(_http)
+                ],
+              ),
+            )));
   }
 
   //构建基础题目选择按钮
@@ -237,12 +239,12 @@ class ResultState extends State<ResultPage> {
         onPressed: () {
           setState(() {
             _selected = index;
-            _answerVisible=false;
+            _answerVisible = false;
             Future.delayed(
                 const Duration(milliseconds: 5000),
-                    () => setState(() {
-                  _answerVisible = true;
-                }));
+                () => setState(() {
+                      _answerVisible = true;
+                    }));
           });
         },
         child: Text(
@@ -397,10 +399,12 @@ class ResultState extends State<ResultPage> {
   }
 
   Future _getData() async {
-    setState(() async {
-      final res = await HttpUtils.instance
-          .get("/getAnswers", params: {"question": _question}, tips: true);
-      _listData = res.data;
+    final res = await HttpUtils.instance
+        .get("/getAnswers", params: {"question": _question}, tips: true);
+    _listData = res.data;
+    setState(() {
+      controller = CountdownController(this, startCount: 5);
+      controller.start();
     });
     Future.delayed(
         const Duration(milliseconds: 5000),

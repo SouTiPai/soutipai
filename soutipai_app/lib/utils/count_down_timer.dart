@@ -16,13 +16,6 @@ class CountDownWidgetWrapper extends StatefulWidget {
 }
 
 class _CountDownWidgetWrapperState extends State<CountDownWidgetWrapper> {
-  @override
-  void initState() {
-    super.initState();
-    widget.controller._countDownChanged = () {
-      setState(() {});
-    };
-  }
 
   @override
   Widget build(BuildContext context) =>
@@ -50,7 +43,10 @@ class CountdownController {
 
   late Timer _timer;
 
-  CountdownController({this.startCount = 60, this.endCount = 0});
+  CountdownController(State state,{this.startCount = 60, this.endCount = 0}){
+    _countDownChanged = ()=>state.setState((){});
+    _timer = new Timer(const Duration(milliseconds: 1000), _countDownChanged);
+  }
 
   void start() {
     _countDown = startCount;
