@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GetAnswers {
     @RequestMapping("/getAnswers")
     public String getAnswer(HttpServletRequest request){
-        System.out.println("connected");
         String question = request.getParameter("question");
-        System.out.println(question);
-        System.out.println(GetAnswersFromTable.getAnswers(question));
         return GetAnswersFromTable.getAnswers(question);
     }
 }
