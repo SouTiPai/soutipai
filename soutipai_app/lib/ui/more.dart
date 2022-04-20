@@ -36,102 +36,48 @@ class _moreState extends State<more> {
                   ),
                 ),
               ),
-              Container(
-                color: Color.fromRGBO(0, 0, 0, 0),
-                margin: EdgeInsets.all(10),
-                child: ActionChip(
-                  backgroundColor: Color.fromRGBO(0, 0, 0, 0),
-                  onPressed: () {},
-                  avatar: CircleAvatar(
-                    backgroundColor: Colors.blue,
-                    child: Text("店"),
-                  ),
-                  label: Text("非遗商店"),
-                  // 文本 Widget
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                    fontFamily: "LiShu",
-                  ),
-                  // 文本样式，TextStyle
-                  labelPadding: EdgeInsets.fromLTRB(20, 48, 27, 50),
-                  // 文本外边距 Padding
-                  // Chip 形状
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(
-                      width: 2,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: ActionChip(
-                  backgroundColor: Colors.white,
-                  //padding: EdgeInsets.fromLTRB(30, 30, 10, 5),
-                  onPressed: () {},
-                  avatar: CircleAvatar(
-                    backgroundColor: Colors.green,
-                    child: Text("错"),
-                  ),
-                  label: Text("错题本"),
-                  // 文本 Widget
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                    fontFamily: "LiShu",
-                  ),
-                  // 文本样式，TextStyle
-                  labelPadding: EdgeInsets.fromLTRB(23, 50, 65, 50),
-                  // 文本外边距 Padding
-
-                  // Chip 形状
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(
-                      width: 2,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: ActionChip(
-                  backgroundColor: Colors.white,
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  onPressed: () {},
-                  avatar: CircleAvatar(
-                    backgroundColor: Colors.blue,
-                    child: Text("我"),
-                  ),
-                  label: Text("我的   "),
-                  // 文本 Widget
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                    fontFamily: "LiShu",
-                  ),
-                  // 文本样式，TextStyle
-                  labelPadding: EdgeInsets.fromLTRB(45, 45, 60, 40),
-                  // 文本外边距 Padding
-
-                  // Chip 形状
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(
-                      width: 2,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )
+              _buildContainer("店", "非遗商店", Colors.blue),
+              _buildContainer("我", "我的", Colors.green),
+              _buildContainer("错", "错题本", Colors.blue),
             ],
           ),
         ),
       ),
     ));
+  }
+
+  Container _buildContainer(String str1, String str2, MaterialColor color) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: ActionChip(
+        backgroundColor: Colors.white,
+        padding: EdgeInsets.all(10),
+        onPressed: () {},
+        avatar: CircleAvatar(
+          backgroundColor: color,
+          child: Text(str1),
+        ),
+        label: Container(
+            height: 100,
+            width: 200,
+            alignment: Alignment.center,
+            child: Text(
+              str2,
+              style: TextStyle(
+                fontSize: 45,
+                fontFamily: "LiShu",
+              ),
+              textAlign: TextAlign.center,
+            )),
+        // Chip 形状
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            width: 2,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 }
