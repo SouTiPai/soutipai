@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class more extends StatefulWidget {
-  const more({Key? key}) : super(key: key);
+class More extends StatefulWidget {
+  const More({Key? key}) : super(key: key);
 
   @override
-  State<more> createState() => _moreState();
+  State<More> createState() => MoreState();
 }
 
-class _moreState extends State<more> {
+class MoreState extends State<More> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
                 "assets/images/more/shouhuigufengbeijingtupian-32913140_1.jpg"),
@@ -27,8 +27,8 @@ class _moreState extends State<more> {
             children: <Widget>[
               Container(
                 alignment: Alignment.topLeft,
-                margin: EdgeInsets.all(10),
-                child: Text(
+                margin: const EdgeInsets.all(10),
+                child: const Text(
                   "更多功能",
                   style: TextStyle(
                     fontFamily: "LiShu",
@@ -36,9 +36,16 @@ class _moreState extends State<more> {
                   ),
                 ),
               ),
-              _buildContainer("店", "非遗商店", Colors.blue),
-              _buildContainer("我", "我的", Colors.green),
-              _buildContainer("错", "错题本", Colors.blue),
+              _buildContainer("店", "非遗商店", Colors.blue, () {}),
+              _buildContainer("我", "我的", Colors.green, () {}),
+              _buildContainer(
+                  "错",
+                  "错题本",
+                  Colors.blue,
+                  () => {
+                        Navigator.pushNamed(
+                            context, '/wrong_questions_book_page')
+                      }),
             ],
           ),
         ),
@@ -46,13 +53,14 @@ class _moreState extends State<more> {
     ));
   }
 
-  Container _buildContainer(String str1, String str2, MaterialColor color) {
+  Container _buildContainer(
+      String str1, String str2, MaterialColor color, Function fun) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: ActionChip(
         backgroundColor: Colors.white,
-        padding: EdgeInsets.all(10),
-        onPressed: () {},
+        padding: const EdgeInsets.all(10),
+        onPressed: () => fun(),
         avatar: CircleAvatar(
           backgroundColor: color,
           child: Text(str1),
@@ -63,7 +71,7 @@ class _moreState extends State<more> {
             alignment: Alignment.center,
             child: Text(
               str2,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 45,
                 fontFamily: "LiShu",
               ),
@@ -72,7 +80,7 @@ class _moreState extends State<more> {
         // Chip 形状
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: BorderSide(
+          side: const BorderSide(
             width: 2,
             color: Colors.white,
           ),
