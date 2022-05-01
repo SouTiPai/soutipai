@@ -15,12 +15,13 @@ import java.util.Objects;
 @RestController
 public class OCR {
     @RequestMapping("/ocr")
-    public String ocr(@RequestParam("file") MultipartFile file) {
+    public String get(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
             try {
-                String[] path = file.getOriginalFilename().split("/");
+                String[] path = Objects.requireNonNull(file.getOriginalFilename()).split("/");
                 File filePath = new File(path[0] + "/" + path[1]);
                 if (!filePath.exists()) {
+                    //noinspection ResultOfMethodCallIgnored
                     filePath.mkdirs();
                 }
                 BufferedOutputStream out = new BufferedOutputStream(

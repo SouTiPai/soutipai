@@ -3,7 +3,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import 'api.dart';
+import '../api/api.dart';
 import 'base_res.dart';
 import 'dio_wrapper.dart';
 import 'dio_intercept.dart' as interceptor;

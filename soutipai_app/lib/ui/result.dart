@@ -400,7 +400,7 @@ class ResultState extends State<ResultPage> {
 
   Future _getData() async {
     final res = await HttpUtils.instance
-        .get("/getAnswers", params: {"question": _question}, tips: true);
+        .get("/answers/get", params: {"question": _question}, tips: true);
     _listData = res.data;
     setState(() {
       controller = CountdownController(this, startCount: 5);

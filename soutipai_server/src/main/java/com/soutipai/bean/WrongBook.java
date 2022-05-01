@@ -7,6 +7,7 @@ public class WrongBook {
     String userId;
     String questionId;
     Date createTime;
+    String questionName;
 
     public String getId() {
         return id;
@@ -40,6 +41,14 @@ public class WrongBook {
         this.createTime = createTime;
     }
 
+    public String getQuestionName() {
+        return questionName;
+    }
+
+    public void setQuestionName(String questionName) {
+        this.questionName = questionName;
+    }
+
     @Override
     public String toString() {
         return "WrongBook{" +
@@ -47,6 +56,7 @@ public class WrongBook {
                 ", userId='" + userId + '\'' +
                 ", questionId='" + questionId + '\'' +
                 ", createTime=" + createTime +
+                ", question='" + questionName + '\'' +
                 '}';
     }
 }
