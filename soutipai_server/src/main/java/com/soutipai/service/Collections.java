@@ -1,6 +1,5 @@
 package com.soutipai.service;
 
-import com.soutipai.common.GetJSONFromData;
 import com.soutipai.dao.WrongBookDaoImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,20 +17,12 @@ public class Collections {
     }
 
     @RequestMapping("/add")
-    public String add(@RequestParam(value = "userId") String userId,@RequestParam(value = "questionId") String questionId) {
-        if (wrongBookDaoImpl.addWrongBook(userId, questionId)) {
-            return GetJSONFromData.getJSONFromData(200, null);
-        }else{
-            return GetJSONFromData.getJSONFromData(400, null);
-        }
+    public String add(@RequestParam(value = "userId") String userId, @RequestParam(value = "questionId") String questionId) {
+        return wrongBookDaoImpl.addWrongBook(userId,questionId);
     }
 
     @RequestMapping("/delete")
     public String delete(@RequestParam(value = "id") String id) {
-        if(wrongBookDaoImpl.deleteWrongBookById(id)){
-            return GetJSONFromData.getJSONFromData(200, null);
-        }else{
-            return GetJSONFromData.getJSONFromData(400, null);
-        }
+        return wrongBookDaoImpl.deleteWrongBookById(id);
     }
 }

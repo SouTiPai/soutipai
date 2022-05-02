@@ -13,14 +13,20 @@ public class WrongBookDaoImpl extends BaseDao<WrongBook> implements WrongBookDao
     }
 
     @Override
-    public boolean addWrongBook(String userId, String questionId) {
+    public String addWrongBook(String userId, String questionId) {
         String sql = "INSERT INTO wrong_book_table (id, user_id, question_id) VALUES (?, ?, ?)";
-        return update(sql, JDBCUtils.getUUID(), userId, questionId) > 0;
+        if(update(sql, JDBCUtils.getUUID(), userId, questionId) > 0)
+            return GetJSONFromData.getJSONFromData(200, null);
+        else
+            return GetJSONFromData.getJSONFromData(400, null);
     }
 
     @Override
-    public boolean deleteWrongBookById(String id) {
+    public String deleteWrongBookById(String id) {
         String sql = "UPDATE wrong_book_table SET del_flag = 1 WHERE id = ?";
-        return update(sql, id) > 0;
+        if(update(sql, id) > 0)
+            return GetJSONFromData.getJSONFromData(200, null);
+        else
+            return GetJSONFromData.getJSONFromData(400, null);
     }
 }
