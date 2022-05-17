@@ -156,6 +156,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fluttertoast">
+          <value>
+            <list>
+              <option value="C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-8.0.9/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="http">
           <value>
             <list>
@@ -451,6 +458,7 @@
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_custom_camera_pugin-0.0.5/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_lints-1.0.4/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_plugin_android_lifecycle-2.0.5/lib" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-8.0.9/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/http-0.13.3/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/http_client_helper-2.0.2/lib" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.flutter-io.cn/http_parser-4.0.0/lib" />

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:soutipai_app/utils/count_down_timer.dart';
 import 'package:soutipai_app/utils/dio_utils.dart';
+import 'package:soutipai_app/widgets/toast.dart';
 
 class ResultPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -173,7 +174,7 @@ class ResultState extends State<ResultPage> {
           borderOnForeground: false,
           margin: const EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Container(
-            constraints: BoxConstraints(minHeight: 500),
+            constraints: const BoxConstraints(minHeight: 500),
             margin: const EdgeInsets.all(10.0),
             alignment: Alignment.center,
             child: const Text(
@@ -414,5 +415,13 @@ class ResultState extends State<ResultPage> {
   }
 
   //TODO: 添加收藏，待实现
-  Future _addCollection() async {}
+  Future _addCollection() async {
+    final res = await HttpUtils.instance
+        .get("/collections/add", params: {"question": _question}, tips: true);
+    if (res.data["code"] == 200) {
+      displayToast.show("收藏成功");
+    } else {
+      displayToast.show("收藏失败");
+    }
+  }
 }

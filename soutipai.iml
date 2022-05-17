@@ -5,6 +5,11 @@
       <map />
     </option>
   </component>
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -12,9 +17,9 @@
       <excludeFolder url="file://$MODULE_DIR$/test/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/test/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/build" />
-      <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
