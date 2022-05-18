@@ -32,6 +32,35 @@ public abstract class BaseDao<T> {
     }
 
     /**
+     * c查询记录数目
+     * @param conn 数据库连接
+     * @param sql 查询记录数目的sql语句
+     * @param args 可变形参列表，sql语句中的占位符对应的参数
+     * @return 记录数目
+     * @author wutong
+     */
+    public int getCount(Connection conn, String sql, Object... args) {
+        QueryRunner qr = new QueryRunner();
+        try {
+            return qr.query(conn, sql, new ScalarHandler<Long>(), args).intValue();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getCount(String sql, Object... args) {
+        Connection conn;
+        try {
+            conn = JDBCUtils.getConnection();
+            return getCount(conn, sql, args);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
      * 通用的增删改操作
      *
      * @param conn 事务操作时需传入链接（可选）
