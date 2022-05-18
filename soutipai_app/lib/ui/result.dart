@@ -26,6 +26,7 @@ class ResultState extends State<ResultPage> {
   bool _visible = false; //文本修改框是否可见
   bool _answerVisible = false; //答案是否可见
   double _minHeight = 190;
+  String _userId = "266b6dd4e58042b3a4b58ddf020d1e3f";
 
   var _questionText = TextEditingController();
 
@@ -414,14 +415,17 @@ class ResultState extends State<ResultPage> {
             }));
   }
 
-  //TODO: 添加收藏，待实现
   Future _addCollection() async {
     final res = await HttpUtils.instance
-        .get("/collections/add", params: {"question": _question}, tips: true);
-    if (res.data["code"] == 200) {
-      displayToast.show("收藏成功");
-    } else {
-      displayToast.show("收藏失败");
-    }
+        .get("/collections/add", params: {"userId":_userId,"questionId": _listData[_selected]["id"]}, tips: true);
+    setState(() {
+      if (res.code == 200) {
+        displayToast.show("收藏成功");
+      } else if(res.code == 201){
+        displayToast.show("取消收藏成功");
+      } else {
+        displayToast.show("收藏失败");
+      }
+    });
   }
 }
