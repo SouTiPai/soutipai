@@ -8,10 +8,11 @@ import 'package:soutipai_app/ui/wrong_questions_book.dart';
 
 final routes = {
   "/": (context) => const MyHomePage(title: "搜题派"),
-  "/result_page": (context,{arguments}) => ResultPage(arguments: arguments),
+  "/result_page": (context, {arguments}) => ResultPage(arguments: arguments),
   "/wrong_questions_book_page": (context) => const WrongQuestionsBook(),
-  "/more_page": (context) => const more(),
-  "/crop_picture_page": (context,{arguments}) => ScreenDemo(arguments:arguments),
+  "/more_page": (context) => const More(),
+  "/crop_picture_page": (context, {arguments}) =>
+      ScreenDemo(arguments: arguments),
   "/photograph_page": (context) => const ImagePickerWidget()
 };
 
