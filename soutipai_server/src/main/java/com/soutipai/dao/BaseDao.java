@@ -32,7 +32,7 @@ public abstract class BaseDao<T> {
     }
 
     /**
-     * c查询记录数目
+     * 查询记录数目
      * @param conn 数据库连接
      * @param sql 查询记录数目的sql语句
      * @param args 可变形参列表，sql语句中的占位符对应的参数

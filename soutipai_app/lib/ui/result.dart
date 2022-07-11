@@ -417,7 +417,7 @@ class ResultState extends State<ResultPage> {
 
   Future _addCollection() async {
     final res = await HttpUtils.instance
-        .get("/collections/add", params: {"userId":_userId,"questionId": _listData[_selected]["id"]}, tips: true);
+        .get("/collections/add", params: {"userId":_userId, "questionId": _listData[_selected]["id"]}, tips: true);
     setState(() {
       if (res.code == 200) {
         displayToast.show("收藏成功");
