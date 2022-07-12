@@ -10,7 +10,7 @@ public class WrongBookDaoImpl extends BaseDao<WrongBook> implements WrongBookDao
 
     @Override
     public String getWrongBookByUserId(String userId) {
-        String sql = "SELECT wbt.id id, wbt.user_id userId, wbt.question_id questionId, wbt.create_time createTime, qt.question_name questionName FROM wrong_book_table wbt LEFT JOIN question_table qt ON wbt.question_id = qt.id WHERE wbt. user_id = ? AND wbt.del_flag=0";
+        String sql = "SELECT wbt.id id, wbt.user_id userId, wbt.question_id questionId, wbt.create_time createTime, qt.question_name questionName FROM wrong_book_table wbt LEFT JOIN question_table qt ON wbt.question_id = qt.id WHERE wbt. user_id = ? AND wbt.del_flag = 0";
         return GetJSONFromData.getJSONFromData(200, getForList(sql, userId));
     }
 

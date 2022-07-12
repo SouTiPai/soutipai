@@ -32,6 +32,8 @@ class ResultState extends State<ResultPage> {
 
   late CountdownController controller;
 
+  late Timer t;
+
   @override
   void initState() {
     super.initState();
@@ -47,11 +49,7 @@ class ResultState extends State<ResultPage> {
               _getData();
               controller.start();
             }));
-    Future.delayed(
-        const Duration(milliseconds: 5000),
-        () => setState(() {
-              _answerVisible = true;
-            }));
+    t = Timer(const Duration(seconds: 0),()=>{});
   }
 
   @override
@@ -242,11 +240,14 @@ class ResultState extends State<ResultPage> {
           setState(() {
             _selected = index;
             _answerVisible = false;
-            Future.delayed(
+            controller = CountdownController(this, startCount: 5);
+            controller.start();
+            t.cancel();
+            t = Timer(
                 const Duration(milliseconds: 5000),
-                () => setState(() {
-                      _answerVisible = true;
-                    }));
+                    () => setState(() {
+                  _answerVisible = true;
+                }));
           });
         },
         child: Text(
@@ -408,7 +409,8 @@ class ResultState extends State<ResultPage> {
       controller = CountdownController(this, startCount: 5);
       controller.start();
     });
-    Future.delayed(
+    t.cancel();
+    t = Timer(
         const Duration(milliseconds: 5000),
         () => setState(() {
               _answerVisible = true;
