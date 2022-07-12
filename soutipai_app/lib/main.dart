@@ -17,6 +17,5 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/mine_page',
       onGenerateRoute: onGenerateRoute,
-    );
-  }
+    ); }
 }
