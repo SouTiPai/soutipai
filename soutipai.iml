@@ -20,6 +20,9 @@
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/httpRequests" />
+      <excludeFolder url="file://$MODULE_DIR$/data" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
