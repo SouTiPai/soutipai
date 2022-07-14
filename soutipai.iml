@@ -12,8 +12,13 @@
       <excludeFolder url="file://$MODULE_DIR$/test/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/test/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/soutipai_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/soutipai_app/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>

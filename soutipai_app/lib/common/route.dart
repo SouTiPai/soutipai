@@ -5,6 +5,7 @@ import 'package:soutipai_app/ui/more.dart';
 import 'package:soutipai_app/ui/photograph.dart';
 import 'package:soutipai_app/ui/result.dart';
 import 'package:soutipai_app/ui/wrong_questions_book.dart';
+import 'package:soutipai_app/ui/mine.dart';
 
 final routes = {
   "/": (context) => const MyHomePage(title: "搜题派"),
@@ -13,7 +14,8 @@ final routes = {
   "/more_page": (context) => const More(),
   "/crop_picture_page": (context, {arguments}) =>
       ScreenDemo(arguments: arguments),
-  "/photograph_page": (context) => const ImagePickerWidget()
+  "/photograph_page": (context) => const ImagePickerWidget(),
+  "/mine_page": (context) => const Mine(),
 };
 
 // ignore: prefer_function_declarations_over_variables

@@ -37,7 +37,11 @@ class MoreState extends State<More> {
                 ),
               ),
               _buildContainer("店", "非遗商店", Colors.blue, () {}),
-              _buildContainer("我", "我的", Colors.green, () {}),
+              _buildContainer("我", "我的", Colors.green,
+                      ()=> {
+                        Navigator.pushNamed(
+                            context, '/mine_page')
+                      }),
               _buildContainer(
                   "错",
                   "错题本",
