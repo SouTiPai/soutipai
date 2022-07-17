@@ -1,0 +1,183 @@
+@font-face {
+    font-family: Hwxw;
+    src: url("../resource/汉仪尚巍手书W.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../resource/main_background.jpeg");
+    background-size: cover;
+}
+
+.main {
+    width: 100%;
+    height: 700px;
+}
+
+.top {
+    width: 100%;
+    height: 10%;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.main_img {
+    float: left;
+}
+
+.main_img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+#title {
+    font-size: 50px;
+    font-family: Hwxw, serif;
+}
+
+.title {
+    float: left;
+}
+
+.edit {
+    height: 60px;
+    width: 120px;
+    margin-top: 5px;
+    float: right;
+
+}
+
+#edit {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    opacity: 0.8;
+    font-family: Hwxw, serif;
+    font-size: 50px;
+    color: palegreen;
+    border: 0;
+}
+
+.center {
+    height: 350px;
+    width: 750px;
+    margin: 20px auto;
+}
+
+.center_tag {
+    height: 100px;
+    width: 50px;
+    margin: 100px 30px;
+    float: left;
+}
+
+.center p {
+    font-size: 100px;
+    font-family: Hwxw, serif;
+    color: gold;
+}
+
+#outer {
+    width: 520px;
+    height: 320px;
+    float: left;
+    background-color: greenyellow;
+    /*相对定位*/
+    position: relative;
+    overflow: hidden; /*超出部分隐藏*/
+}
+
+#imgList {
+    list-style: none;
+    position: absolute;
+}
+
+#imgList li {
+    float: left;
+}
+
+#navId {
+    position: absolute;
+    bottom: 15px;
+}
+
+#navId a {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 0 5px;
+    background-color: red;
+    opacity: 0.5;
+}
+
+#navId a:hover {
+    background-color: black;
+}
+
+.img1 {
+    width: 520px;
+    height: 320px;
+}
+
+.bottom {
+    width: 100%;
+    height: 250px;
+}
+
+#bt_left {
+    width: 522px;
+    height: 225px;
+    margin: 1%;
+    float: left;
+    background-image: url("../resource/home.jfif");
+    background-size: cover;
+    border-radius: 5%;
+    border: 2px solid gray;
+}
+
+#home_introduction {
+    margin-left: 10px;
+    font-family: Hwxw, serif;
+    font-size: 50px;
+    color: orange;
+}
+
+#home_introduction0 {
+    margin-left: 10px;
+    font-family: Hwxw, serif;
+    font-size: 35px;
+    color: whitesmoke;
+}
+
+.fgx {
+    width: 3px;
+    height: 235px;
+    background-color: gray;
+    margin-left: 15px;
+}
+
+#self_introduction {
+    margin-left: 10px;
+    font-family: Hwxw, serif;
+    font-size: 50px;
+    color: orange;
+}
+
+#bt_right {
+    width: 522px;
+    height: 225px;
+    margin-left: 25px;
+    float: right;
+    background-image: url("../resource/self.png");
+    background-size: cover;
+    border-radius: 5%;
+    border: 2px solid gray;
+}

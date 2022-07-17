@@ -28,6 +28,8 @@ class ResultState extends State<ResultPage> {
   double _minHeight = 190;
   String _userId = "266b6dd4e58042b3a4b58ddf020d1e3f";
 
+  bool onLoading = true; //是否正在加载中
+
   var _questionText = TextEditingController();
 
   late CountdownController controller;
@@ -176,9 +178,9 @@ class ResultState extends State<ResultPage> {
             constraints: const BoxConstraints(minHeight: 500),
             margin: const EdgeInsets.all(10.0),
             alignment: Alignment.center,
-            child: const Text(
-              "您搜索的题目\n被外星人掳走了,\n请重试",
-              style: TextStyle(
+            child: Text(
+              onLoading ? "加载中..." : "您搜索的题目\n被外星人掳走了,\n请重试",
+              style: const TextStyle(
                 fontFamily: 'LiShu',
                 fontSize: 30,
               ),
@@ -402,19 +404,23 @@ class ResultState extends State<ResultPage> {
   }
 
   Future _getData() async {
+    setState(() {
+      onLoading = true;
+    });
     final res = await HttpUtils.instance
         .get("/answers/get", params: {"question": _question}, tips: true);
     _listData = res.data;
     setState(() {
       controller = CountdownController(this, startCount: 5);
       controller.start();
+      onLoading = false;
     });
     t.cancel();
     t = Timer(
         const Duration(milliseconds: 5000),
-        () => setState(() {
-              _answerVisible = true;
-            }));
+            () => setState(() {
+          _answerVisible = true;
+        }));
   }
 
   Future _addCollection() async {

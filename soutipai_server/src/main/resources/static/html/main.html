@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/main.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="top">
+        <div class="main_img">
+            <img alt="头像" id="img0" onclick="img()" src="../resource/086.jpg">
+        </div>
+        <div class="title">
+            <p id="title">主页</p>
+        </div>
+        <div class="edit">
+            <button id="edit" onclick="edit();">退出</button>
+        </div>
+    </div>
+    <div class="center">
+        <div class="center_tag">
+            <p id="left">&lt;</p>
+        </div>
+        <div id="outer">
+            <ul id="imgList">
+                <li><img alt="page1" class="img1" src="../resource/page1.png"></li>
+                <li><img alt="page2" class="img1" src="../resource/page2.png"></li>
+                <li><img alt="page2" class="img1" src="../resource/page3.png"></li>
+                <li><img alt="page2" class="img1" src="../resource/home.jfif"></li>
+                <li><img alt="page2" class="img1" src="../resource/self.png"></li>
+                <li><img alt="page1" class="img1" src="../resource/page1.png"></li><!--增加以实现无缝切换-->
+            </ul>
+            <div id="navId">
+                <a href="javascript:0"></a>
+                <a href="javascript:0"></a>
+                <a href="javascript:0"></a>
+                <a href="javascript:0"></a>
+                <a href="javascript:0"></a>
+            </div>
+        </div>
+        <div class="center_tag">
+            <p id="right">&gt;</p>
+        </div>
+    </div>
+    <div class="bottom">
+        <table>
+            <tr>
+                <td>
+                    <a href="home.html">
+                        <div id="bt_left"></div>
+                    </a>
+                </td>
+                <td>
+                    <p id="home_introduction">盐城--<br></p>
+                    <p id="home_introduction0">一个让人打开<br>心扉的地方</p>
+                </td>
+                <td>
+                    <div class="fgx"></div>
+                </td>
+                <td>
+                    <p id="self_introduction">个人作品</p>
+                </td>
+                <td>
+                    <a href="作业.html">
+                        <div id="bt_right"></div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

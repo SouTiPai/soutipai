@@ -30,6 +30,12 @@ public class User {
         this.userLevel = userLevel;
     }
 
+    public User(String userId, String userName, String userPassword) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPassword = userPassword;
+    }
+
     public String getId() {
         return id;
     }

@@ -11,4 +11,5 @@ public class SoutipaiServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(SoutipaiServerApplication.class, args);
     }
+
 }
