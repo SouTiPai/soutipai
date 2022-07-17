@@ -76,8 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         // 进入拍照
         Positioned(
-          top: MediaQuery.of(context).size.height * 0.58,
-          left: MediaQuery.of(context).size.width * 0.36,
+          top: MediaQuery.of(context).size.height * 0.54,
+          left: MediaQuery.of(context).size.width * 0.39,
           child: MaterialButton(
             highlightElevation: 0,
             hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
@@ -86,15 +86,16 @@ class _MyHomePageState extends State<MyHomePage> {
             // 触发区域
             // ignore: sized_box_for_whitespace
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.32,
-              height: MediaQuery.of(context).size.height * 0.14,
+              //decoration: new BoxDecoration(color: Colors.grey),
+              width: MediaQuery.of(context).size.width * 0.21,
+              height: MediaQuery.of(context).size.height * 0.09,
             ),
             onPressed: () => Navigator.pushNamed(context, '/photograph_page'),
           ),
         ),
         // 进入错题本
         Positioned(
-          top: MediaQuery.of(context).size.height * 0.74,
+          top: MediaQuery.of(context).size.height * 0.70,
           left: MediaQuery.of(context).size.width * 0.29,
           child: MaterialButton(
             highlightElevation: 0,
@@ -104,8 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
             // 触发区域
             // ignore: sized_box_for_whitespace
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.2,
-              height: MediaQuery.of(context).size.height * 0.12,
+              //decoration: new BoxDecoration(color: Colors.grey),
+              width: MediaQuery.of(context).size.width * 0.19,
+              height: MediaQuery.of(context).size.height * 0.07,
             ),
             onPressed: () =>
                 Navigator.pushNamed(context, '/wrong_questions_book_page'),
@@ -113,8 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         // 进入更多功能
         Positioned(
-          top: MediaQuery.of(context).size.height * 0.75,
-          left: MediaQuery.of(context).size.width * 0.52,
+          top: MediaQuery.of(context).size.height * 0.70,
+          left: MediaQuery.of(context).size.width * 0.54,
           child: MaterialButton(
             highlightElevation: 0,
             hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
@@ -123,8 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
             // 触发区域
             // ignore: sized_box_for_whitespace
             child: Container(
+              //decoration: new BoxDecoration(color: Colors.grey),
               width: MediaQuery.of(context).size.width * 0.12,
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.08,
             ),
             onPressed: () => Navigator.pushNamed(context, '/more_page'),
           ),

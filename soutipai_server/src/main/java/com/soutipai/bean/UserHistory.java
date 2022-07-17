@@ -7,7 +7,8 @@ public class UserHistory {
     String userId;
     Blob questionPhoto;
     String questionText;
-    String questionNAme;
+
+    String questionName;
     String questionId;
 
     public String getId() {
@@ -42,12 +43,12 @@ public class UserHistory {
         this.questionText = questionText;
     }
 
-    public String getQuestionNAme() {
-        return questionNAme;
+    public String getQuestionName() {
+        return questionName;
     }
 
     public void setQuestionNAme(String questionNAme) {
-        this.questionNAme = questionNAme;
+        this.questionName = questionNAme;
     }
 
     public String getQuestionId() {
@@ -65,7 +66,7 @@ public class UserHistory {
                 ", userId='" + userId + '\'' +
                 ", questionPhoto=" + questionPhoto +
                 ", questionText='" + questionText + '\'' +
-                ", questionNAme='" + questionNAme + '\'' +
+                ", questionNAme='" + questionName + '\'' +
                 ", questionId='" + questionId + '\'' +
                 '}';
     }
