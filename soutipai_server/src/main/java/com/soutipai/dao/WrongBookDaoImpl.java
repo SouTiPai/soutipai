@@ -4,7 +4,7 @@ import com.soutipai.bean.WrongBook;
 import com.soutipai.common.GetJSONFromData;
 import com.soutipai.utils.JDBCUtils;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class WrongBookDaoImpl extends BaseDao<WrongBook> implements WrongBookDao {
 
