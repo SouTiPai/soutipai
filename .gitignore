@@ -1,1 +1,10 @@
 /data/
+/out
+/.idea
+
+
+/soutipai_app/build
+/soutipai_app/test
+/soutipai_app/.dart_tool
+
+/soutipai_server/target
