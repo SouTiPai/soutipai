@@ -23,4 +23,9 @@ public class QuestionDaoImpl extends BaseDao<Question> implements QuestionDao {
         return GetJSONFromData.getJSONFromData(200, getForList(sql, Arrays.stream(params).toArray()));
     }
 
+    @Override
+    public String getQuestionById(String questionId) {
+        String sql = "SELECT id, question_name questionName, question_answer questionAnswer, question_type questionType, question_remark questionRemark FROM question_table WHERE id = ? AND del_flag = 0";
+        return GetJSONFromData.getJSONFromData(200, getForList(sql, questionId));
+    }
 }

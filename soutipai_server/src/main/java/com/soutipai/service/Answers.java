@@ -13,4 +13,10 @@ public class Answers {
         QuestionDaoImpl questionDao = new QuestionDaoImpl();
         return questionDao.getQuestionByName(question);
     }
+
+    @RequestMapping("/getById")
+    public String getById(@RequestParam(value = "questionId") String questionId) {
+        QuestionDaoImpl questionDao = new QuestionDaoImpl();
+        return questionDao.getQuestionById(questionId);
+    }
 }
