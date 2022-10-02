@@ -14,7 +14,7 @@
     <!-- 摄像机权限 -->
     <uses-permission android:name="android.permission.CAMERA"/>
     <application
-            android:label="soutipai_app"
+            android:label="搜题派"
             android:icon="@mipmap/ic_launcher">
         uppress AndroidDomInspection
         <activity

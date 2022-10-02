@@ -36,7 +36,35 @@ class WrongQuestionsBookState extends State<WrongQuestionsBook> {
           Navigator.pushNamed(context, "/result_page",
               arguments: {"questionId": _listData[index]["questionId"]});
         },
-        child: Text('题目 $index\n ${_listData[index]["questionName"]}'),
+        child: Card(
+          color: const Color(0xfff3c3c3),
+          shadowColor: Colors.grey,
+          elevation: 5,
+          borderOnForeground: false,
+          margin: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+          child: Container(
+              constraints: BoxConstraints(minHeight: 190),
+              margin: const EdgeInsets.all(10.0),
+              alignment: Alignment.center,
+              child: Row(
+                children: [
+                  Text(
+                    "题目 ${index + 1}",
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "${_listData[index]["questionName"]}",
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ],
+              )),
+        ),
         //还需要考虑格式问题
         style: ButtonStyle(
             side: MaterialStateProperty.all(const BorderSide(
