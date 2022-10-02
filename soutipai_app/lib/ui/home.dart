@@ -27,11 +27,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Column(
                   children: [
                     Container(
-                      height: 145,
+                      height: 75,
                     ),
                     Container(
                       child: HomeTextWidget.textField(
-                          "搜 题 派", 40.0, 1.0, FontWeight.w200, 43.0),
+                          "搜 题 派", 50.0, 1.0, FontWeight.w200, 43.0),
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
                     ),
@@ -74,61 +74,99 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           color: const Color.fromRGBO(214, 213, 213, 1),
         ),
+        //
+        //
+        //
+        Padding(
+            padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height * 0.35, 0, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MaterialButton(
+                  highlightElevation: 0,
+                  hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
+                  highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
+                  splashColor: Colors.transparent,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                        "错题",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'LiShu',
+                        fontSize: 20,
+                      ),
+                    ),
+                    //child: HomeTextWidget.textField("错题本", 20.0, 1.0, FontWeight.w100, 1.0),
+                    //child: Text("错题本", style: TextStyle(fontFamily: "隶书"),),
+                    width: MediaQuery.of(context).size.width * 0.22,
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      //border: Border.all(color: const Color.fromRGBO(54, 52, 52, 1.0), width: 1),
+                      color: const Color.fromRGBO(182, 161, 74, 0.6),
+                    ),
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/wrong_questions_book_page')
+              ),
+              MaterialButton(
+                  highlightElevation: 0,
+                  hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
+                  highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
+                  splashColor: Colors.transparent,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "拍照",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'LiShu',
+                        fontSize: 20,
+                      ),
+                    ),
+                    //child: HomeTextWidget.textField("拍照", 20.0, 1.0, FontWeight.w100, 1.0),
+                    width: MediaQuery.of(context).size.width * 0.22,
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      //border: Border.all(color: const Color.fromRGBO(54, 52, 52, 1.0), width: 1),
+                      color: const Color.fromRGBO(182, 161, 74, 0.6),
+                    ),
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/photograph_page')
+              ),
+              MaterialButton(
+                  highlightElevation: 0,
+                  hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
+                  highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
+                  splashColor: Colors.transparent,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "更多",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'LiShu',
+                        fontSize: 20,
+                      ),
+                    ),
+                    //child: HomeTextWidget.textField("更多", 20.0, 1.0, FontWeight.w100, 1.0),
+                    width: MediaQuery.of(context).size.width * 0.22,
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      ///border: Border.all(color: const Color.fromRGBO(54, 52, 52, 1.0), width: 1),
+                      color: const Color.fromRGBO(182, 161, 74, 0.6),
+                    ),
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/more_page')
+              ),
+            ],
+          ),
+        ),
         // 进入拍照
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.58,
-          left: MediaQuery.of(context).size.width * 0.36,
-          child: MaterialButton(
-            highlightElevation: 0,
-            hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
-            highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
-            splashColor: Colors.transparent,
-            // 触发区域
-            // ignore: sized_box_for_whitespace
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.32,
-              height: MediaQuery.of(context).size.height * 0.14,
-            ),
-            onPressed: () => Navigator.pushNamed(context, '/photograph_page'),
-          ),
-        ),
         // 进入错题本
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.74,
-          left: MediaQuery.of(context).size.width * 0.29,
-          child: MaterialButton(
-            highlightElevation: 0,
-            hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
-            highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
-            splashColor: Colors.transparent,
-            // 触发区域
-            // ignore: sized_box_for_whitespace
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.2,
-              height: MediaQuery.of(context).size.height * 0.12,
-            ),
-            onPressed: () =>
-                Navigator.pushNamed(context, '/wrong_questions_book_page'),
-          ),
-        ),
         // 进入更多功能
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.75,
-          left: MediaQuery.of(context).size.width * 0.52,
-          child: MaterialButton(
-            highlightElevation: 0,
-            hoverColor: const Color.fromRGBO(0, 0, 0, 0.0),
-            highlightColor: const Color.fromRGBO(0, 0, 0, 0.0),
-            splashColor: Colors.transparent,
-            // 触发区域
-            // ignore: sized_box_for_whitespace
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.12,
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
-            onPressed: () => Navigator.pushNamed(context, '/more_page'),
-          ),
-        ),
       ],
     ));
   }

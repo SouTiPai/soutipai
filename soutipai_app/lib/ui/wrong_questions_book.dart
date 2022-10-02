@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:soutipai_app/utils/dio_utils.dart';
+import 'dart:async';
 
 class WrongQuestionsBook extends StatefulWidget {
   const WrongQuestionsBook({Key? key}) : super(key: key);
@@ -8,14 +11,25 @@ class WrongQuestionsBook extends StatefulWidget {
 }
 
 class WrongQuestionsBookState extends State<WrongQuestionsBook> {
+  String id ="098da7e20aa44aaa81dc4f70a5ebc5be";
+  late final res;
+  getData()async{
+    res = await HttpUtils.instance
+        .get("/collections/getAll", params: {"userId": id}, tips: true);
+  }
+
+
+
   //每个按钮块要展示的信息，在这里传到outlinedButton的Text中
   //还需要数据库传数据来
   //在这里定义onPressed的action
-  final List<Widget> questions = new List<Widget>.generate(
+
+
+  final List<Widget> questions = List<Widget>.generate(
     20,
-    (index) => OutlinedButton(
+    (res) => OutlinedButton(
       onPressed: () {},
-      child: Text("题目 $index"), //还需要考虑格式问题
+      child: Text(""), //还需要考虑格式问题
       style: ButtonStyle(
           side: MaterialStateProperty.all(BorderSide(
             color: Colors.blueGrey,
@@ -72,8 +86,8 @@ class WrongQuestionsBookState extends State<WrongQuestionsBook> {
                 child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(100.0),
-                          topRight: Radius.circular(100.0)),
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0)),
                       color: Colors.white,
                     ),
                     child: ListView.separated(

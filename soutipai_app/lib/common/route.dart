@@ -1,11 +1,15 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:soutipai_app/ui/crop_picture.dart';
 import 'package:soutipai_app/ui/home.dart';
+import 'package:soutipai_app/ui/land.dart';
 import 'package:soutipai_app/ui/more.dart';
 import 'package:soutipai_app/ui/photograph.dart';
 import 'package:soutipai_app/ui/result.dart';
 import 'package:soutipai_app/ui/wrong_questions_book.dart';
 import 'package:soutipai_app/ui/mine.dart';
+import 'package:soutipai_app/ui/test.dart';
 
 final routes = {
   "/": (context) => const MyHomePage(title: "搜题派"),
@@ -16,6 +20,8 @@ final routes = {
       ScreenDemo(arguments: arguments),
   "/photograph_page": (context) => const ImagePickerWidget(),
   "/mine_page": (context) => const Mine(),
+  "/test_page": (context) => const Test(),
+  "/land_page": (context) => const LandPage(),
 };
 
 // ignore: prefer_function_declarations_over_variables

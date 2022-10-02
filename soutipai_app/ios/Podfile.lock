@@ -3,7 +3,7 @@ PODS:
   - image_cropper (0.0.4):
     - Flutter
     - TOCropViewController (~> 2.6.1)
-  - image_editor (0.0.1):
+  - image_editor (1.0.0):
     - Flutter
   - image_picker_ios (0.0.1):
     - Flutter
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   image_cropper: 60c2789d1f1a78c873235d4319ca0c34a69f2d98
-  image_editor: c1d038630eedea60d2dee9c14f36aa66c7f9cfab
+  image_editor: eab82a302a6623a866da5145b7c4c0ee8a4ffbb4
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
   path_provider_ios: 7d7ce634493af4477d156294792024ec3485acd5
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
