@@ -12,9 +12,17 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0
-  dio: ^3.0.9
+  dio: ^4.0.4
   toast: ^0.1.5
   cupertino_icons: ^1.0.2
+  extended_image: ^4.2.1
+  image_cropper: ^1.4.1
+  image_editor: ^1.0.2
+  image: any
+  image_picker: ^0.8.4+1
+  http: ^0.13.0
+  flutter_custom_camera_pugin: ^0.0.5
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +46,16 @@ flutter:
     - assets/images/result/photo_another.png
     - assets/images/result/text_background.png
     - assets/images/wrong_questions_book/SanXingTing_sus.jpg
+    - assets/images/screenshot/2.png
+    - assets/images/screenshot/3.png
+    - assets/images/screenshot/4.png
+    - assets/images/screenshot/5.jpg
+    - assets/images/photograph/circle.png
+    - assets/images/photograph/flashlight.png
+    - assets/images/photograph/goback.png
+    - assets/images/photograph/photograph_picture.png
+    - assets/images/photograph/photograph_storage_picture.png
+    - assets/images/home/flowers.png
+    - assets/images/more/shouhuigufengbeijingtupian-32913140_1.jpg
+    - assets/images/mine/background.png
+    - assets/images/mine/head.png

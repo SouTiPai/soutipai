@@ -1,5 +1,7 @@
+//file:noinspection GrUnresolvedAccess
 include ':app'
 
+//noinspection GroovyAssignabilityCheck
 def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
 def properties = new Properties()
 
