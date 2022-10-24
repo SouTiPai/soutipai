@@ -45,7 +45,7 @@ class Mine extends StatefulWidget{
                   ),
 
                   _buildContainer("账户信息", Colors.blue, (){}),
-                  _buildContainer( "注册/登陆", Colors.green, () {}),
+                  _buildContainer( "笔记本", Colors.green, () {}),
                   _buildContainer( "修改密码", Colors.blue, () {}),
                   _buildContainer("退出登录", Colors.green, (){}),
                 ],

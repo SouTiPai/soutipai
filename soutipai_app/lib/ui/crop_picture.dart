@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:extended_image/extended_image.dart';
-import 'package:image_picker/image_picker.dart';
-
 // ignore: implementation_imports
 import 'package:dio/src/multipart_file.dart' as prefix;
+import 'package:extended_image/extended_image.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:soutipai_app/utils/dio_utils.dart';
 
 class ScreenDemo extends StatefulWidget {
@@ -74,7 +73,7 @@ class _ScreenDemoState extends State<ScreenDemo> {
                     prefix.MultipartFile img =
                         await prefix.MultipartFile.fromFile(
                       image.path, //图片路径
-                      filename: "data" "/admin/" +
+                          filename: "data/admin/" + //TODO:更改文件名(admin为用户id)
                           DateTime.now().millisecondsSinceEpoch.toString() +
                           ".jpg", //图片名称
                     );

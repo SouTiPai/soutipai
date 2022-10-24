@@ -1,12 +1,13 @@
 import 'dart:io';
+
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 import '../api/api.dart';
 import 'base_res.dart';
-import 'dio_wrapper.dart';
 import 'dio_intercept.dart' as interceptor;
+import 'dio_wrapper.dart';
 
 class HttpUtils {
   static final HttpUtils _instance = HttpUtils._();
@@ -23,7 +24,7 @@ class HttpUtils {
     // 构造 Dio options
     final BaseOptions options = BaseOptions(
       connectTimeout: 15000,
-      receiveTimeout: 15000,
+      receiveTimeout: 30000,
       sendTimeout: 10000,
       responseType: ResponseType.plain,
       validateStatus: (_) => true,

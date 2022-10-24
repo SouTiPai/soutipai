@@ -1,10 +1,11 @@
- import 'dart:async';
+import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:soutipai_app/utils/count_down_timer.dart';
 import 'package:soutipai_app/utils/dio_utils.dart';
+import 'package:soutipai_app/widgets/toast.dart';
 
 class ResultPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -19,25 +20,36 @@ class ResultPage extends StatefulWidget {
 }
 
 class ResultState extends State<ResultPage> {
+  bool _wrongBook = false;
   String _question = "";
+  String _questionId = "";
   List _listData = [];
   int _selected = 0; //选择的题目
   bool _visible = false; //文本修改框是否可见
   bool _answerVisible = false; //答案是否可见
   double _minHeight = 190;
+  String _userId = "266b6dd4e58042b3a4b58ddf020d1e3f";
+
+  bool onLoading = true; //是否正在加载中
 
   var _questionText = TextEditingController();
 
   late CountdownController controller;
+
+  late Timer t;
 
   @override
   void initState() {
     super.initState();
     controller = CountdownController(this, startCount: 5);
     if (widget.arguments["question"] != null) {
+      _wrongBook = false;
       for (int i = 0; i < widget.arguments["question"].length; i++) {
         _question += widget.arguments["question"][i]["words"];
       }
+    } else {
+      _wrongBook = true;
+      _questionId = widget.arguments["questionId"];
     }
     Future.delayed(
         Duration.zero,
@@ -45,11 +57,7 @@ class ResultState extends State<ResultPage> {
               _getData();
               controller.start();
             }));
-    Future.delayed(
-        const Duration(milliseconds: 5000),
-        () => setState(() {
-              _answerVisible = true;
-            }));
+    t = Timer(const Duration(seconds: 0), () => {});
   }
 
   @override
@@ -92,10 +100,11 @@ class ResultState extends State<ResultPage> {
                 right: 3,
                 child: MaterialButton(
                   onPressed: () {
-                    setState(() {
-                      _visible ? _minHeight = 190 : _minHeight = 117;
-                      _visible = !_visible;
-                    });
+                    if (_wrongBook == false)
+                      setState(() {
+                        _visible ? _minHeight = 190 : _minHeight = 117;
+                        _visible = !_visible;
+                      });
                   },
                   child: const Image(
                     image: AssetImage("assets/images/result/lamp.png"),
@@ -173,12 +182,12 @@ class ResultState extends State<ResultPage> {
           borderOnForeground: false,
           margin: const EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Container(
-            constraints: BoxConstraints(minHeight: 500),
+            constraints: const BoxConstraints(minHeight: 500),
             margin: const EdgeInsets.all(10.0),
             alignment: Alignment.center,
-            child: const Text(
-              "您搜索的题目\n被外星人掳走了,\n请重试",
-              style: TextStyle(
+            child: Text(
+              onLoading ? "加载中..." : "您搜索的题目\n被外星人掳走了,\n请重试",
+              style: const TextStyle(
                 fontFamily: 'LiShu',
                 fontSize: 30,
               ),
@@ -240,11 +249,14 @@ class ResultState extends State<ResultPage> {
           setState(() {
             _selected = index;
             _answerVisible = false;
-            Future.delayed(
+            controller = CountdownController(this, startCount: 5);
+            controller.start();
+            t.cancel();
+            t = Timer(
                 const Duration(milliseconds: 5000),
-                () => setState(() {
-                      _answerVisible = true;
-                    }));
+                    () => setState(() {
+                  _answerVisible = true;
+                }));
           });
         },
         child: Text(
@@ -399,20 +411,41 @@ class ResultState extends State<ResultPage> {
   }
 
   Future _getData() async {
-    final res = await HttpUtils.instance
-        .get("/answers/get", params: {"question": _question}, tips: true);
+    setState(() {
+      onLoading = true;
+    });
+    var res;
+    if (_wrongBook == false)
+      res = await HttpUtils.instance
+          .get("/answers/get", params: {"question": _question}, tips: true);
+    else
+      res = await HttpUtils.instance.get("/answers/getById",
+          params: {"questionId": _questionId}, tips: true);
     _listData = res.data;
     setState(() {
       controller = CountdownController(this, startCount: 5);
       controller.start();
+      onLoading = false;
     });
-    Future.delayed(
+    t.cancel();
+    t = Timer(
         const Duration(milliseconds: 5000),
         () => setState(() {
               _answerVisible = true;
             }));
   }
 
-  //TODO: 添加收藏，待实现
-  Future _addCollection() async {}
+  Future _addCollection() async {
+    final res = await HttpUtils.instance
+        .get("/collections/add", params: {"userId":_userId, "questionId": _listData[_selected]["id"]}, tips: true);
+    setState(() {
+      if (res.code == 200) {
+        displayToast.show("收藏成功");
+      } else if(res.code == 201){
+        displayToast.show("取消收藏成功");
+      } else {
+        displayToast.show("收藏失败");
+      }
+    });
+  }
 }

@@ -15,8 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/land_page',
+      initialRoute: '/',
       onGenerateRoute: onGenerateRoute,
-    );
-  }
+    ); }
 }
