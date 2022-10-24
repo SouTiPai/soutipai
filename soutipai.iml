@@ -5,6 +5,11 @@
       <map />
     </option>
   </component>
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -40,7 +45,7 @@
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/ios/.symlinks/plugins/image_picker_ios/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/soutipai_app/ios/.symlinks/plugins/image_picker_ios/example/.pub" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Dart Packages" level="project" />
