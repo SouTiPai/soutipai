@@ -20,9 +20,7 @@ class ResultPage extends StatefulWidget {
 }
 
 class ResultState extends State<ResultPage> {
-  bool _wrongBook = false;
   String _question = "";
-  String _questionId = "";
   List _listData = [];
   int _selected = 0; //选择的题目
   bool _visible = false; //文本修改框是否可见
@@ -43,13 +41,9 @@ class ResultState extends State<ResultPage> {
     super.initState();
     controller = CountdownController(this, startCount: 5);
     if (widget.arguments["question"] != null) {
-      _wrongBook = false;
       for (int i = 0; i < widget.arguments["question"].length; i++) {
         _question += widget.arguments["question"][i]["words"];
       }
-    } else {
-      _wrongBook = true;
-      _questionId = widget.arguments["questionId"];
     }
     Future.delayed(
         Duration.zero,
@@ -57,7 +51,7 @@ class ResultState extends State<ResultPage> {
               _getData();
               controller.start();
             }));
-    t = Timer(const Duration(seconds: 0), () => {});
+    t = Timer(const Duration(seconds: 0),()=>{});
   }
 
   @override
@@ -100,11 +94,10 @@ class ResultState extends State<ResultPage> {
                 right: 3,
                 child: MaterialButton(
                   onPressed: () {
-                    if (_wrongBook == false)
-                      setState(() {
-                        _visible ? _minHeight = 190 : _minHeight = 117;
-                        _visible = !_visible;
-                      });
+                    setState(() {
+                      _visible ? _minHeight = 190 : _minHeight = 117;
+                      _visible = !_visible;
+                    });
                   },
                   child: const Image(
                     image: AssetImage("assets/images/result/lamp.png"),
@@ -414,13 +407,8 @@ class ResultState extends State<ResultPage> {
     setState(() {
       onLoading = true;
     });
-    var res;
-    if (_wrongBook == false)
-      res = await HttpUtils.instance
-          .get("/answers/get", params: {"question": _question}, tips: true);
-    else
-      res = await HttpUtils.instance.get("/answers/getById",
-          params: {"questionId": _questionId}, tips: true);
+    final res = await HttpUtils.instance
+        .get("/answers/get", params: {"question": _question}, tips: true);
     _listData = res.data;
     setState(() {
       controller = CountdownController(this, startCount: 5);
@@ -430,9 +418,9 @@ class ResultState extends State<ResultPage> {
     t.cancel();
     t = Timer(
         const Duration(milliseconds: 5000),
-        () => setState(() {
-              _answerVisible = true;
-            }));
+            () => setState(() {
+          _answerVisible = true;
+        }));
   }
 
   Future _addCollection() async {

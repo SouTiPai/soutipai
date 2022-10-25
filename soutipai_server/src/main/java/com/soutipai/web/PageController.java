@@ -37,9 +37,4 @@ public class PageController {
         model.addAttribute("user1", user1);
         return "userInfo";
     }
-
-    @GetMapping("/code")
-    public String Code() {
-        return "code.docx";
-    }
 }
