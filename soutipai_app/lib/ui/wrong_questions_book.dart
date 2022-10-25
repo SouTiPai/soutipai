@@ -31,22 +31,24 @@ class WrongQuestionsBookState extends State<WrongQuestionsBook> {
   Widget build(BuildContext context) {
     List<Widget> questions = List.generate(
       _listData.length,
-      (index) => OutlinedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, "/result_page",
-              arguments: {"questionId": _listData[index]["questionId"]});
-        },
-        child: Card(
-          color: const Color(0xfff3c3c3),
-          shadowColor: Colors.grey,
-          elevation: 5,
-          borderOnForeground: false,
-          margin: const EdgeInsets.fromLTRB(50, 5, 50, 5),
-          child: Container(
-              constraints: BoxConstraints(minHeight: 190),
+      (index) => Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: OutlinedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/result_page",
+                arguments: {"questionId": _listData[index]["questionId"]});
+          },
+          child: Card(
+            color: Colors.transparent,
+            shadowColor: Colors.grey,
+            elevation: 0,
+            borderOnForeground: false,
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 190),
               margin: const EdgeInsets.all(10.0),
               alignment: Alignment.center,
-              child: Row(
+              child: Column(
                 children: [
                   Text(
                     "题目 ${index + 1}",
@@ -63,18 +65,28 @@ class WrongQuestionsBookState extends State<WrongQuestionsBook> {
                     textAlign: TextAlign.left,
                   ),
                 ],
-              )),
-        ),
-        //还需要考虑格式问题
-        style: ButtonStyle(
+              ),
+            ),
+          ),
+          //还需要考虑格式问题
+          style: ButtonStyle(
             side: MaterialStateProperty.all(const BorderSide(
-              color: Colors.blueGrey,
+              color: Colors.transparent,
             )),
             minimumSize: MaterialStateProperty.all(const Size(100, 170)),
             textStyle: MaterialStateProperty.all(const TextStyle(
               color: Colors.black,
               fontFamily: "LiShu",
-            ))),
+            )),
+          ),
+        ),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: AssetImage('assets/images/wrong_questions_book/text.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
       ),
     );
     return Scaffold(

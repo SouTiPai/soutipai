@@ -1,0 +1,46 @@
+127.0.0.1 - - [25/Oct/2022:11:03:05 +0800] "HEAD / " 200 -
+127.0.0.1 - - [25/Oct/2022:11:03:10 +0800] "HEAD / " 200 -
+127.0.0.1 - - [25/Oct/2022:11:03:50 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1665
+127.0.0.1 - - [25/Oct/2022:11:03:50 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1665
+127.0.0.1 - - [25/Oct/2022:11:28:17 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:11:40:13 +0800] "GET /resource/app-release.apk HTTP/1.1" 200 4702208
+127.0.0.1 - - [25/Oct/2022:11:40:17 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:11:40:22 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:11:40:34 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16698184
+127.0.0.1 - - [25/Oct/2022:11:40:43 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16711680
+127.0.0.1 - - [25/Oct/2022:11:40:59 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:11:50:23 +0800] "GET /resource/app-release.apk HTTP/1.1" 200 2596864
+127.0.0.1 - - [25/Oct/2022:11:50:27 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:11:50:31 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:11:50:47 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16711680
+127.0.0.1 - - [25/Oct/2022:11:50:54 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16698293
+127.0.0.1 - - [25/Oct/2022:11:51:13 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:11:53:25 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:11:53:26 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:11:53:30 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:11:57:01 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "GET / HTTP/1.0" 200 237
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:23 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:06:24 +0800] "-" 400 435
+127.0.0.1 - - [25/Oct/2022:12:30:55 +0800] "HEAD / " 200 -
+127.0.0.1 - - [25/Oct/2022:12:31:00 +0800] "HEAD / " 200 -
+127.0.0.1 - - [25/Oct/2022:14:06:50 +0800] "HEAD / " 200 -
+127.0.0.1 - - [25/Oct/2022:14:06:55 +0800] "HEAD / " 200 -
+127.0.0.1 - - [25/Oct/2022:14:19:02 +0800] "GET /resource/app-release.apk HTTP/1.1" 200 4702208
+127.0.0.1 - - [25/Oct/2022:14:19:04 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:14:19:09 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:14:19:26 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16754279
+127.0.0.1 - - [25/Oct/2022:14:19:26 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16760832
+127.0.0.1 - - [25/Oct/2022:14:20:04 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
+127.0.0.1 - - [25/Oct/2022:14:37:00 +0800] "GET /resource/app-release.apk HTTP/1.1" 200 2547712
+127.0.0.1 - - [25/Oct/2022:14:37:02 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:14:37:17 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 524288
+127.0.0.1 - - [25/Oct/2022:14:37:35 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16760832
+127.0.0.1 - - [25/Oct/2022:14:37:36 +0800] "GET /resource/app-release.apk HTTP/1.1" 206 16754405
+127.0.0.1 - - [25/Oct/2022:14:38:02 +0800] "GET /collections/getAll?userId=266b6dd4e58042b3a4b58ddf020d1e3f HTTP/1.1" 200 1697
